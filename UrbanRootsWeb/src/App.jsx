@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Signup from './components/signup'
-import './components/signup.css'
+import Signup from './Components/signupComponent/Signup'
+import './Components/signupComponent/Signup.css'
+import LandingPage from './Components/landingPageComponent/LandingPage'
 function App() {
  
   return (
@@ -8,6 +9,7 @@ function App() {
      <BrowserRouter>
       <Routes>
        <Route path="/signup" element={<Signup />}></Route>
+       <Route path="/landingPage" element={<LandingPage/>}></Route>
       </Routes>
      </BrowserRouter>
  
