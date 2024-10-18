@@ -1,0 +1,172 @@
+nav {
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    background-color: #EAFFEA; /* Background color */
+    padding: 10px 20px; /* Add some padding */
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top:0;
+    z-index: 1000; /* Keep navbar on top */
+}
+
+.nav-logo-container img {
+    width: 100px;
+    height: auto;
+    filter: contrast(1.2) saturate(1.1) brightness(1%);
+    
+}
+
+.navbar-links-container {
+    display: flex; 
+    align-items: center; /* Center vertically */
+    gap: 20px; 
+}
+
+/* Default link styles */
+.navbar-links-container a {
+    position: relative; /* Needed for positioning the dot */
+    text-decoration: none; /* Remove default underline */
+    color: #1A6F53; /* Default text color */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 4px; /* Add padding for better clickable area */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover styles */
+.navbar-links-container a:hover {
+    color: #1A6F53; /* Change text color on hover */
+    font-size: large; /* Increase font size on hover */
+    font-weight: bold;
+}
+
+/* Dot effect */
+.navbar-links-container a::after {
+    content: '';
+    position: absolute; /* Positioning for the dot */
+    bottom: -5px; /* Position the dot below the text */
+    left: 50%; /* Center the dot */
+    transform: translateX(-50%); /* Adjust centering */
+    width: 6px; /* Dot width */
+    height: 6px; /* Dot height */
+    border-radius: 50%; /* Make it circular */
+    background-color: #1A6F53; /* Dot color */
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.3s ease; /* Smooth appearance */
+}
+
+/* Show dot when active */
+.navbar-links-container a.active::after {
+    opacity: 1; 
+}
+
+/* Hide dot on hover of any item */
+.navbar-links-container a:hover::after {
+    opacity: 0; 
+}
+
+/* Hamburger menu styles */
+.navbar-menu-container {
+    display: none; /* Hide hamburger by default */
+}
+
+.navbar-links-container button {
+    background-color: #4CAF50; /* Default background color */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 25%;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links-container button:hover {
+    background-color: #1A6F53; /* New background color on hover */
+}
+
+  
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar-links-container {
+        display: none; /* Hide links in mobile view */
+    }
+    .navbar-menu-container {
+        display: block; /* Show hamburger menu in mobile view */
+        cursor: pointer; /* Show pointer on hover */
+    }
+}
+.bgImage{
+    max-width: 100;
+    width: 100%;
+    opacity: 0.5;
+    filter: brightness(50%) blur(9px);
+}
+.text-overlay h1 {
+    position: absolute; /* Positioning text over the image */
+    top: 25%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Centering adjustment */
+    color: #1A6F53; /* Text color */
+    text-align: center; /* Center text */
+    padding: 20px; /* Optional padding */
+    z-index: 1; /* Ensure text is above the overlay */
+    font-size: 530%;
+    text-shadow: 0 0 5px #EAFFEA, 0 0 10px #EAFFEA, 0 0 15px #EAFFEA;
+}
+
+.features-section {
+    text-align: center; /* Center-align the text */
+    padding: 50px 20px; /* Add padding */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.features-section h2 {
+    position: relative;
+    font-size: 2.5em; /* Large heading size */
+    color: #1A6F53; /* Main color */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.features-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items */
+    gap: 40px; /* Space between items */
+    flex-wrap: wrap; /* Wrap items on smaller screens */
+}
+
+.feature {
+    z-index:1;
+    display: block;
+    top:50%;
+    max-width: 250px;
+    text-align: center; 
+    background-color: #EAFFEA; 
+    border-radius: 10px; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.feature:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+.feature-icon {
+    width: 60px; /* Set icon width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 15px; /* Space below icon */
+}
+
+.feature h3 {
+    font-size: 1.5em; /* Medium heading size */
+    color: #1A6F53; /* Main color */
+    margin: 10px 0; /* Space above and below heading */
+}
+
+.feature p {
+    color: #555; /* Dark gray text color for description */
+}
