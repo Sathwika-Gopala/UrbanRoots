@@ -1,6 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
+  const naviate = useNavigate();
+  const handleSubmit = ()=> {
+    naviate('/landingPage')
+  }
   return (
     <div className='page-container'>
       {/* Header Section */}
@@ -21,7 +26,7 @@ function Signup() {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" placeholder='*******' />
 
-          <button type='submit'>Sign Up</button>
+          <button type='submit' onClick={handleSubmit}>Sign Up</button>
         </form>
       </div>
     </div>

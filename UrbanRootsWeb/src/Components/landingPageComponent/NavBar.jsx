@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import UrbanRootsLogoFinal from "../../assets/UrbanRootsLogoFinal.png";
 import { Box, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { HiOutlineBars3 } from "react-icons/hi2";
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+    const navigate = useNavigate();
     const [openMenu, setOpenMenu] = useState(false);
     const [activeIndex, setActiveIndex] = useState(null); // State for active menu item
 
     const menuOptions = [
-        { text: "Home" },
-        { text: "About" },
-        { text: "Events" },
-        { text: "Discuss" },
-        { text: "Resources" },
+        { text: "Home", path: "/landingPage"},
+        { text: "About", path: "/about"},
+        { text: "Events", path: "/events" },
+        { text: "Discuss", path: "/discussions" },
+        { text: "Resources", path: "/resources" },
         { text: "Contact" },
     ];
 
-    const handleClick = (index) => {
+    const handleClick = (index, path) => {
         setActiveIndex(index); // Set the clicked item as active
+        navigate(path);
     };
 
     return (
@@ -29,12 +32,16 @@ const NavBar = () => {
                 {menuOptions.map((item, index) => (
                     <a
                         key={item.text}
-                        onClick={() => handleClick(index)} // Handle click
+                        onClick={(e) => {
+                            e.preventDefault(); // Prevent the default anchor behavior
+                            handleClick(index, item.path);
+                        }} 
                         className={activeIndex === index ? 'active' : ''} // Apply active class
                         href="#"
                     >
                         {item.text}
                     </a>
+                    
                 ))}
                 <button type='submit'>
                     Login/ Register
