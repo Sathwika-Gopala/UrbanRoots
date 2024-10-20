@@ -1,8 +1,10 @@
 import React from 'react'
-
+import NavBar from '../landingPageComponent/NavBar'
 const Resources = () => {
   return (
-    <div>Resources</div>
+    <div>
+      <NavBar/>
+    </div>
   )
 }
 

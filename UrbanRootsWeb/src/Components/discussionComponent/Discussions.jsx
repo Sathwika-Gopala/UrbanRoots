@@ -1,8 +1,10 @@
 import React from 'react'
-
+import NavBar from '../landingPageComponent/NavBar'
 const Discussion = () => {
   return (
-    <div>Discussion</div>
+    <div>
+      <NavBar/>
+    </div>
   )
 }
 
