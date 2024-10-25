@@ -6,6 +6,7 @@ import Events from './Components/eventsComponent/Events'
 import Discussions from './Components/discussionComponent/Discussions'
 import Resources from './Components/resourceComponent/Resources'
 import About from './Components/aboutComponent/About'
+import Blog from './Components/blogComponent/Blog'
 function App() {
  
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/events" element={<Events/>}></Route>
        <Route path="/discussions" element={<Discussions/>}></Route>
        <Route path="/resources" element={<Resources/>}></Route>
+       <Route path="/resources/:id" Component={Blog}/>
        <Route path="/about" element={<About/>}></Route>
       </Routes>
      </BrowserRouter>
