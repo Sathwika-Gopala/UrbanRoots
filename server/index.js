@@ -4,11 +4,12 @@ import bcrypt from 'bcrypt';
 
 import cors from 'cors';
 import pkg from 'pg'; 
+import dotenv from 'dotenv';
 const { Pool } = pkg;
-
+dotenv.config(); // Load environment variables from .env
 // Create a new pool instance using the connection string
 const pool = new Pool({
-  connectionString: 'postgres://vultradmin:AVNS_Byo9bwiuskiDNHWnKRB@vultr-prod-bc6e9893-c102-47d9-8f42-b5229cf06f54-vultr-prod-0e3d.vultrdb.com:16751/defaultdb',
+  connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false } // Required for secure connections
 });
 
