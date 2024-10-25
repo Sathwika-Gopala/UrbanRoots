@@ -52,6 +52,8 @@ function Login() {
     <div>
       {/* Include NavBar at the top */}
       <NavBar />
+      <div class="full-height-container">
+   
 
       <div className="login-page">
         
@@ -112,6 +114,7 @@ function Login() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

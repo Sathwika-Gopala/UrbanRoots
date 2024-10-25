@@ -1,9 +1,11 @@
 /* Login.css */
-html, body {
-  height: 100%;
+.full-height-container {
+  display: flex;
+    flex-direction: column;
+    height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
+  overflow: hidden; 
 }
 
 .login-page {
@@ -35,6 +37,7 @@ html, body {
   height: auto; /* Remove fixed height for flexibility */
   margin-top: -3%;
   margin-left: 3.5%;
+
 }
 
   
