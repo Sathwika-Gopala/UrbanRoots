@@ -1,96 +1,302 @@
-/* Overall page container */
-.page-container {
-    font-family: Arial, sans-serif;
-    background-color: #F0F0F0; /* Light background for contrast */
-    min-height: 100vh;
-    display: flex;
+/* Page container for signup */
+.signup-page {
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+.signupPage {
+  display: flex;
+
+  align-items: center;
+}
+
+.sideImageCont {
+  background-color: #1a6f53;
+  height: 84vh;
+  width: 35%;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7%;
+}
+
+.side-image {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.text-container {
+  text-align: center;
+
+}
+
+.text-container h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: white;
+}
+.text-container p {
+  font-size: 18px;
+  margin-bottom: 15px;
+  
+  color: white;
+  padding: 0 30px;
+}
+
+.sign-up-container {
+  width: 540px;
+  margin: 40px 10% 40px 10%;
+  padding: 20px ;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 520px; /* Adjusted for better form width */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  padding-right: 50px; 
+}
+
+/* Form title */
+.sign-up-container h1 {
+  text-align: center;
+  color: #1a6f53;
+  margin-bottom: 20px;
+  font-size: 34px;
+}
+.input-group {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+/* Ensure there's space between label and input */
+.input-group label {
+  font-size: 1.2rem;
+  color: #1a6f53;
+  margin-bottom: 2px; /* Gap between label and input */
+  font-weight: bold;
+}
+
+.input-group input {
+  padding: 10px;
+  margin-top: 5px; /* Increase space between label and input */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  width: 100%;
+ 
+ 
+}
+
+/* Form layout */
+.sign-up-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
+  gap: 20px 30px;
+}
+
+.sign-up-form label {
+  font-size: 1.2rem;
+  color: #1a6f53;
+  margin-bottom: 5px;
+  font-family: sans-serif;
+  grid-column: span 2; /* Ensure labels span full width */
+}
+
+.sign-up-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: sans-serif;
+  width: 100%;
+
+}
+
+.sign-up-form input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+.sign-up-form .full-width {
+  grid-column: span 2; /* Spans both columns */
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  grid-column: span 2;
+  gap: 5px; 
+  margin-left: 3%;
+ 
+}
+
+.button-submit {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 200;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  flex: 1;
+  margin: 10px;
+}
+
+.button-submit:hover {
+  background-color: #1a6f53;
+}
+
+.cancel-button {
+  border: 2px solid #1a6f53;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  flex: 1;
+  margin: 10px;
+  background-color: white;
+  width: 100%;
+}
+
+.cancel-button:hover {
+  background-color: #1a6f53;
+  color: white;
+}
+.modal {
+  display: flex; /* Use flexbox to center the modal */
+  position: fixed;
+  z-index: 1000; /* Ensure the modal is on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+  animation: fadeIn 0.5s; /* Fade in animation */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+  height: 35%;
+  animation: slideIn 0.5s; /* Slide in animation */
+  border-radius: 15px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-text{
+  text-align: center;
+  color: black;
+ 
+  font-weight: bold;
+  font-size: 30px;
+}
+.cross-button{
+
+  background-color: #4caf50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 200;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30%;
+  flex: 1;
+
+  margin: 18px auto;  /* Center horizontally */
+  display: block;     /* Ensure it behaves as a block-level element */
+  text-align: center;
+  
+  
+}
+.circle-cross {
+  width: 250px;  /* Final circle size */
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid transparent;  /* Start with no border */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: growCircle 1s ease-out forwards;  /* Add animation */
+}
+
+.cross-sign {
+  color: red;
+  font-size: 60px;  /* Increase cross size */
+}
+/* Keyframes to animate the circle around the cross */
+@keyframes growCircle {
+  0% {
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;  /* Hidden initially */
+  }
+  50% {
+    width: 100px;  /* Mid-animation circle size */
+    height: 100px;
+    border: 2px solid red;
+    border-radius: 50%;  /* Ensure it stays circular */
+  }
+  100% {
+    width: 90px;  /* Final larger circle size */
+    height: 90px;
+    border: 2px solid red;  /* Fully visible border */
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-page {
     flex-direction: column;
-    align-items: center;
   }
-  
-  /* Header styles */
-  .header {
-    width: 100%;
-    background-color: #4A4A4A; /* Dark Gray for a strong contrast with green */
-    color: #FFFFFF; /* White text for readability */
-    text-align: center;
-    padding: 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .header h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  /* Container for signup form */
+
+  .image-container,
   .sign-up-container {
-    width: 350px;
-    margin: 40px 0;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: none;
+    max-width: 90%;
   }
-  
-  /* Form title */
-  .sign-up-container h2 {
-    text-align: center;
-    color: #4CAF50; /* Use the green for a nature vibe */
-    margin-bottom: 20px;
-    font-size: 24px;
+
+  .side-image {
+    max-width: 100%;
   }
-  
-  /* Form styles */
-  .sign-up-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sign-up-form label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .sign-up-form input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    font-size: 16px;
-  }
-  
-  /* Input focus effect */
-  .sign-up-form input:focus {
-    border-color: #4CAF50;
-    outline: none;
-  }
-  
-  /* Button styles */
-  .sign-up-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 25%;
-    margin: 0 auto;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button hover effect */
-  .sign-up-form button:hover {
-    background-color: #1A6F53;
-  }
-  
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .sign-up-container {
-      width: 90%;
-    }
-  }
-  
+}

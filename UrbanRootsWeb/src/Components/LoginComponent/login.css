@@ -1,0 +1,114 @@
+/* Login.css */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../assets/bg2.avif'); /* Use your image path */
+    background-size: cover; /* Ensure the image fits within the viewport */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-attachment: fixed;
+  }
+  
+  .login-form {
+    margin: 40px 1% 40px 10%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 10px;
+    padding-bottom: 2%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 50%;
+    margin-left: 45%;
+  }
+  
+  h2 {
+    text-align: center; /* Center the heading */
+    color: #1a6f53;
+    margin-bottom: 20px;
+    font-size: 34px;
+  }
+  
+  .login-input-group {
+    width: 100%;
+  }
+  
+  .login-label {
+    font-size: 1.4rem;
+  color: #1a6f53;
+  margin-bottom: 4%; /* Gap between label and input */
+  font-weight: bold;
+  }
+  
+  .login-input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 10px; /* Space between label and input */
+    margin-bottom: 10px;
+    font-family: sans-serif; /* Font style */
+  }
+  
+  .login-button-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: -4%;
+  }
+  
+  .login-button {
+    width: 90%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 23px;
+  }
+  
+  .login-error-message {
+    margin-top: 20px;
+    color: red;
+    text-align: center;
+  }
+  
+  .login-close-error {
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .signup-redirect {
+    text-align: center; /* Center text */
+    margin-top: 20px; /* Add some space above */
+  }
+  
+  .signup-redirect p {
+    color: #1D1934;
+    margin: 0px 0px 7px;
+    font-size: 15.6px;
+    margin-top: 2%;
+    font-style: bold;
+    font-weight: 500;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .signup-redirect a {
+    color: blue; /* Make the link blue or any color you prefer */
+    text-decoration: none;
+  }
+  
+  .signup-redirect a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
