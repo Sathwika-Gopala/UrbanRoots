@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import NavBar from "../landingPageComponent/NavBar"; // Import your NavBar
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"; // Import axios for API calls
-import sideImage from "../../assets/loginPage2.avif"; // Your image path
+import sideimage from "../../assets/gardener.jpg"
 import '@fortawesome/fontawesome-free/css/all.min.css'; // For Font Awesome icons
 
 function Login() {
@@ -56,12 +56,12 @@ function Login() {
       <div className="login-page">
         
         {/* <div className="image-side">
-          <img src={sideImage} alt="Login side" />
+          <img src={sideimage} alt="Login side" />
         </div> */}
 
         {/* Login form */}
         <div className="login-form">
-          <h2>Sign In</h2>
+          <h2>Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="login-input-group">
               <label htmlFor="username" className="login-label">Username:</label>
@@ -90,18 +90,26 @@ function Login() {
             </div>
 
             <div className="login-button-container">
-              <button type="submit" className="login-button">Sign In</button>
+              <button type="submit" className="login-button">Login</button>
             </div>
             <div className="signup-redirect">
-              <p>New to UrbanRoots? <Link to="/signup">Sign up here</Link></p>
+              <p>New to UrbanRoots? <Link to="/signup">Sign up </Link></p>
             </div>
           </form>
 
           {showModal && (
-            <div className="login-error-message">
-              <p>{errorMessage}</p>
-              <button className="login-close-error" onClick={() => setShowModal(false)}>Close</button>
-            </div>
+           <div className="modal">
+           <div className="modal-content animated">
+             <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+             <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+               <div className="circle-cross">
+                 <span className="cross-sign">&#x2716;</span>
+               </div>
+               <p className='modal-text' style={{ color: 'red', marginTop: '10px' }}>{errorMessage}</p>
+             </div>
+             <button className= 'cross-button' onClick={() => setShowModal(false)}>Close</button>
+           </div>
+          </div>
           )}
         </div>
       </div>

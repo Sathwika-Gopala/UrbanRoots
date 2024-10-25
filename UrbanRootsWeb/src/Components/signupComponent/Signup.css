@@ -175,6 +175,7 @@
   background-color: #1a6f53;
   color: white;
 }
+
 .modal {
   display: flex; /* Use flexbox to center the modal */
   position: fixed;
