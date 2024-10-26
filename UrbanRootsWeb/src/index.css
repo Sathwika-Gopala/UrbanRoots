@@ -775,4 +775,38 @@ nav {
       padding: 0.7rem 1.3rem;
     }
   }
+  /* .loader-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #EAFFEA; 
+  }
+  
+  .custom-loader {
+    width: 100px;
+    height: 8px;
+    background: linear-gradient(90deg, #1A6F53, #4CAF50, #1A6F53);
+    background-size: 200% 100%;
+    border-radius: 50px;
+    animation: pulse-loader 1.5s infinite ease-in-out, loader-slide 1.2s linear infinite;
+  }
+  
+  @keyframes pulse-loader {
+    0%, 100% {
+      transform: scaleX(0.7);
+    }
+    50% {
+      transform: scaleX(1.2);
+    }
+  }
+  
+  @keyframes loader-slide {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  } */
   
