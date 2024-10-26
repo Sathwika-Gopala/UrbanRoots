@@ -9,7 +9,7 @@ const { Pool } = pkg;
 dotenv.config(); // Load environment variables from .env
 // Create a new pool instance using the connection string
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+ 
   ssl: { rejectUnauthorized: false } // Required for secure connections
 });
 
