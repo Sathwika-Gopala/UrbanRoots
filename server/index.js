@@ -10,7 +10,7 @@ dotenv.config(); // Load environment variables from .env
 // Create a new pool instance using the connection string
 const pool = new Pool({
  
-  ssl: { rejectUnauthorized: false } // Required for secure connections
+  
 });
 
 const app = express();
