@@ -1,32 +1,42 @@
 /* Login.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+}
+
 .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('../../assets/bg2.avif'); /* Use your image path */
-    background-size: cover; /* Ensure the image fits within the viewport */
-    background-position: center;
-    background-repeat: no-repeat; /* Prevent tiling */
-    background-attachment: fixed;
-  }
-  
-  .login-form {
-    margin: 40px 1% 40px 10%;
-    max-width: 600px;
-    background-color: #fff;
-    padding: 10px;
-    padding-bottom: 2%;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    height: 50%;
-    margin-left: 45%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-image: url('../../assets/g1.avif'); /* Use your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ 
+
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  max-width: 400px; /* Cap width for large screens */
+  height: auto; /* Remove fixed height for flexibility */
+  margin-top: -3%;
+  margin-left: 3.5%;
+}
+
   
   h2 {
     text-align: center; /* Center the heading */
@@ -110,5 +120,114 @@
   
   .signup-redirect a:hover {
     text-decoration: underline; /* Add underline on hover */
+  }
+  .modal {
+    display: flex; /* Use flexbox to center the modal */
+    position: fixed;
+    z-index: 1000; /* Ensure the modal is on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
+    animation: fadeIn 0.5s; /* Fade in animation */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+    height: 35%;
+    animation: slideIn 0.5s; /* Slide in animation */
+    border-radius: 15px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-text{
+    text-align: center;
+    color: black;
+   
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .cross-button{
+  
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30%;
+    flex: 1;
+  
+    margin: 18px auto;  /* Center horizontally */
+    display: block;     /* Ensure it behaves as a block-level element */
+    text-align: center;
+    
+    
+  }
+  .circle-cross {
+    width: 250px;  /* Final circle size */
+    height: 250px;
+    border-radius: 50%;
+    border: 2px solid transparent;  /* Start with no border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: growCircle 1s ease-out forwards;  /* Add animation */
+  }
+  
+  .cross-sign {
+    color: red;
+    font-size: 60px;  /* Increase cross size */
+  }
+  /* Keyframes to animate the circle around the cross */
+  @keyframes growCircle {
+    0% {
+      width: 0;
+      height: 0;
+      border: 2px solid transparent;  /* Hidden initially */
+    }
+    50% {
+      width: 100px;  /* Mid-animation circle size */
+      height: 100px;
+      border: 2px solid red;
+      border-radius: 50%;  /* Ensure it stays circular */
+    }
+    100% {
+      width: 90px;  /* Final larger circle size */
+      height: 90px;
+      border: 2px solid red;  /* Fully visible border */
+      border-radius: 50%;
+    }
   }
   
