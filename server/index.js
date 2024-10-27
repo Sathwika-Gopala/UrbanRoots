@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import express from 'express'
-import dotenv from 'dotenv'
-dotenv.config
-
-const app = express()
-app.listen(process.env.PORT, () =>{
-    console.log("server is running")
-})
-=======
 import express from 'express';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
@@ -19,8 +9,8 @@ const { Pool } = pkg;
 dotenv.config(); // Load environment variables from .env
 // Create a new pool instance using the connection string
 const pool = new Pool({
- 
-  
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false}
 });
 
 const app = express();
@@ -92,4 +82,3 @@ app.post('/api/login', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
->>>>>>> origin
