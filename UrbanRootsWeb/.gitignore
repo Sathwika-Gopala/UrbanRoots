@@ -22,9 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-=======
 
 # Ignore environment variable file
 .env
->>>>>>> origin
