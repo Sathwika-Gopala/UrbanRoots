@@ -18,6 +18,17 @@ const Contact = () => {
       })
       .then(
         () => {
+          // Send confirmation email to the user
+          // const userEmail = form.current.user_email.value; // Get user's email from the form
+          // const confirmationTemplate = {
+          //   to_email: userEmail,
+          //   message: form.current.message.value,
+          // };
+
+          // emailjs.send('service_nx7j78u', 'template_confirmation', confirmationTemplate, {
+          //   publicKey: 'iw_cpImPwG8ip_X2H',
+          // });
+
           setSuccessMessage(true); // Show success message on successful submission
           setErrorMessage(false); // Reset error message
           e.target.reset();
