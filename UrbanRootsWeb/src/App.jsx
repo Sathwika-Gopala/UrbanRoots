@@ -11,6 +11,8 @@ import Contact from './Components/contactComponent/contact'
 import Profile from './Components/profileComponent/profile'
 import './Components/profileComponent/profile.css'
 import Blog from './Components/blogComponent/Blog'
+import Feedback from './Components/feedbackComponent/feedback'
+import FeedbackButton from './Components/feedbackComponent/feedbackButton'
 function App() {
  
   return (
@@ -26,7 +28,9 @@ function App() {
        <Route path="/resources/:id" Component={Blog}/>
        <Route path="/contact" element={<Contact/>}></Route>
        <Route path="/profile" element={<Profile/>}></Route>
+       {/* <Route path="/feedback" element={<Feedback/>}></Route> */}
       </Routes>
+      <FeedbackButton/>
      </BrowserRouter>
  
   )

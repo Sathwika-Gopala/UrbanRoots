@@ -917,5 +917,115 @@ nav {
   .error-alert {
     color: white;
   }
-  
-  
+  /* FeedbackButton.css */
+
+  .feedback-button {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    padding:8px;
+    background-color: #1A6F53; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 8px 8px 0 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.feedback-button:hover {
+    background-color: #144d39; /* Darker shade on hover */
+}
+
+.feedback-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+    padding: 20px;
+}
+.feedback-modal-content {
+    background-color: #EAFFEA;
+    padding: 20px;
+    border-radius: 10px;
+    width: 450px; /* Set a width for the modal */
+    height: auto;
+    position: relative; /* For close button positioning */
+    box-shadow:0 8px 8px 8px rgba(0, 0, 0, 0.5);
+}
+.feedback-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.feedback-container h3 {
+    color: #1A6F53; /* Match your main theme color */
+    margin-bottom: 2; /* Spacing below the heading */
+    font-family: 'Georgia', serif; /* Consistent font family */
+    text-align: center;
+}
+.feedback-container textarea {
+    width: 430px; /* Full width of the container */
+    height: 100px; /* Set a height for the textarea */
+    border: 1px solid #d9e2db; /* Match border styling */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0.5rem; /* Inner padding for text */
+    font-size: 1rem; /* Font size for readability */
+    resize: none; /* Prevent resizing */
+    transition: border-color 0.3s; /* Smooth transition for border */
+    margin-top: 12px;
+    margin-bottom: 2%;
+}
+
+.feedback-container textarea:focus {
+    border-color: #1A6F53; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+.feedback-container button {
+
+    padding: 8px; /* Comfortable button padding */
+    background-color: #1A6F53; /* Main theme color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    /* margin-left: 40%; */
+    display: block;
+    margin: 0 auto;
+}
+
+.feedback-container button:hover {
+    background-color: #144d39; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+
+.stars-component {
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+    color: grey; /* Default color for unselected stars */
+    transition: color 0.3s;
+    cursor: pointer;
+    font-size: 1.5rem; /* Adjust the size as needed */
+}
+.star :hover ~ .star,
+.star:hover{
+    color: orange;
+}
+
+.star.filled {
+    color: orange; /* Color for selected stars */
+}
