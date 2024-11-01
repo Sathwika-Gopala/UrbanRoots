@@ -9,7 +9,7 @@ const NavBar = () => {
     const location = useLocation(); // Get the current location
     const [openMenu, setOpenMenu] = useState(false);
     const [activeIndex, setActiveIndex] = useState(null); // State for active menu item
-
+    const [username, setUsername] = useState(null);
     const menuOptions = [
         { text: "Home", path: "/landingPage" },
         { text: "About", path: "/about" },
@@ -24,8 +24,22 @@ const NavBar = () => {
         navigate(path);
     };
     const handleNavLoginButton=()=> {
-        navigate('/signup')
+        if (username) {
+            navigate('/profile'); // Navigate to profile if user is logged in
+        } else {
+            navigate('/signup'); // Navigate to signup if not logged in
+        }
     }
+
+
+    useEffect(() => {
+        // Check if user is logged in by getting the username from localStorage
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        if (userData) {
+            setUsername(userData.username);
+        }
+    }, []);
+
     // Set the active index based on the current path
     useEffect(() => {
         const currentPath = location.pathname;
@@ -53,7 +67,7 @@ const NavBar = () => {
                     </a>
                 ))}
                 <button type='submit' onClick={handleNavLoginButton}>
-                    Signup/ Login
+                {username ? `Hello, ${username}` : 'Signup/ Login'}
                 </button>
             </div>
             <div className='navbar-menu-container'>

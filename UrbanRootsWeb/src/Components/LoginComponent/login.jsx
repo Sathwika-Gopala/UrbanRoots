@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import NavBar from "../landingPageComponent/NavBar"; // Import your NavBar
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"; // Import axios for API calls
-import sideImage from "../../assets/loginPage2.avif"; // Your image path
+
 import '@fortawesome/fontawesome-free/css/all.min.css'; // For Font Awesome icons
 
 function Login() {
@@ -34,8 +34,9 @@ function Login() {
       );
 
       // Handle success
+      localStorage.setItem("userData", JSON.stringify(response.data));
       console.log(response.data);
-      navigate("/landingPage"); // Redirect on success
+      navigate("/profile"); // Redirect on success
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // Show error message if username and password don't match
