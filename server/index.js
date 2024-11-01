@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
+import multer from 'multer';
 
 import cors from 'cors';
 import pkg from 'pg'; 
@@ -9,12 +10,15 @@ const { Pool } = pkg;
 dotenv.config(); // Load environment variables from .env
 // Create a new pool instance using the connection string
 const pool = new Pool({
- 
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false } 
   
 });
 
 const app = express();
 const port = 5000;
+const storage = multer.memoryStorage(); // Store files in memory
+const upload = multer({ storage });
 
 // Use body-parser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
@@ -22,7 +26,7 @@ app.use(cors()); // To enable cross-origin requests
 
 // Route for user signup
 app.post('/api/signup', async (req, res) => {
-  const { username, email, password , location, contact } = req.body;
+  const { username, email, password , location, contact,profile_image } = req.body;
 
   try {
 
@@ -75,6 +79,28 @@ app.post('/api/login', async (req, res) => {
   } catch (err) {
     console.error('Login error:', err); // Log the error for debugging
     res.status(500).send('Error logging in: ' + err.message); // Send the error message in the response
+  }
+});
+
+app.post('/api/upload-profile-picture', upload.single('image'), async (req, res) => {
+  const { userId } = req.body; // Assuming you're sending userId with the request
+  const image = req.file; // Multer adds file information to req.file
+
+  try {
+    if (!image) {
+      return res.status(400).send({ message: 'No image file uploaded.' });
+    }
+
+    // Convert the image buffer to a base64 string (optional)
+    const imageData = image.buffer.toString('base64');
+
+    // Save imageData to the database against the userId
+    await db.query('UPDATE users SET profileimage = $1 WHERE id = $2', [imageData, userId]);
+    
+    res.status(200).send({ message: 'Profile picture uploaded successfully.' });
+  } catch (error) {
+    console.error('Error saving profile picture:', error);
+    res.status(500).send({ message: 'Error saving profile picture.' });
   }
 });
 

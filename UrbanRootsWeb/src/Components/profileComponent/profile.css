@@ -1,0 +1,328 @@
+.profile-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fafafa;
+  }
+  
+  .profile-container h3 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: white;
+    margin-top: 0%;
+  }
+  
+  .sidebar {
+    width: 300px;
+    background-color: #1a6f53;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+    position: fixed;
+    overflow: hidden; /* Prevent scrolling */
+  }
+  
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* Make image circular */
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%; /* Full width for the ul */
+    display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    align-items: stretch; /* Stretch items to full width */
+  }
+  
+  li {
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-radius 0.2s ease; /* Added transition for border-radius */
+    font-size: 20px;
+    width: 100%; /* Full width to maintain alignment */
+    color: white;
+    padding: 10px 20px; /* Adjusted padding for all items */
+    display: flex;
+    justify-content: flex-start; /* Align icon and text to the left */
+    margin-top: 2%;
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  li .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+
+  .logoutIcon {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+  }
+  
+  .logoutButton {
+    margin-top: 30%;
+    margin-left: -45%;
+  }
+  
+  .sidebar li:hover {
+    background-color: #388E3C;
+  }
+  
+  .logoutIcon
+  {
+   font-size: 24px;
+  }
+  .logoutIcon:hover
+  {
+    color: white;
+  }
+  /* Active state styling */
+  .sidebar li.active {
+    background-color: #4caf50; /* Active color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 20px; /* Same padding as non-active items for consistency */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for better visibility */
+  }
+  
+  .content {
+    min-height: 100vh;
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+   
+  }
+  
+ /* Add these styles to Profile.css or PersonalInfo.css */
+ .personal-info
+{
+  margin-left: 350px;
+ 
+}
+
+.personal-info-container {
+    margin-top: 20px; /* Space above the personal information section */
+   
+  }
+  .personal-info-container h2{
+   text-align: left;
+  }
+  .headingInfo{
+    margin-top: -1.5%;
+    color: gray;
+    font-size: 18px;
+   }
+  .upload-image-box h3{
+    color: #1a6f53;
+  }
+  .BoxAndText{
+  display: flex;
+  }
+  .upload-image-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    margin-top: 20px;
+    width: 90%;
+    position: relative; /* To position the label correctly */
+    margin-left: 3%;
+  }
+  .upload-text
+  {
+    margin-top: 1%;
+    margin-left: 2%;
+  }
+  .upload-text p
+  { color: gray;
+    font-size: 17px;
+    margin-top: -3.5%;
+    margin-left: 4px;
+    /* font-style: oblique; */
+
+  }
+  .circular-upload-label {
+    display: inline-block;
+    border: 2px dashed #1a6f53; /* Circular border */
+    border-radius: 50%; /* Make circular */
+    width: 100px; /* Width of the circular area */
+    height: 100px; /* Height of the circular area */
+    margin-bottom: 10px; /* Space below the label */
+    position: relative;
+    overflow: hidden; /* Hide overflow */
+    cursor: pointer; /* Change cursor to pointer */
+  }
+  
+  .image-upload-input {
+    display: none; /* Hide the default file input */
+  }
+  
+  .uploaded-image {
+    border-radius: 50%; /* Make uploaded image circular */
+    width: 100%; /* Ensure it fits within the circular area */
+    height: 100%; /* Ensure it fits within the circular area */
+    object-fit: cover; /* Cover the circular area */
+  }
+  
+  .file-status {
+    margin-top: 1px;
+    font-size: 15px; 
+    color: gray; 
+    margin-left: 5px;
+  }
+  
+  .button-container {
+    display: flex;
+    /* justify-content: space-between;  */
+    margin-top: -5px; /* Space above buttons */
+  }
+  
+  .upload-button, .delete-button {
+    padding: 10px 20px; /* Padding for buttons */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .upload-button {
+    background-color: #1a6f53; /* Background color */
+    color: white; /* Text color */
+    margin-left: 57%;
+  }
+  
+  .delete-button {
+    background-color: #FF6347; /* Delete button color */
+    color: white; /* Text color */
+  }
+  
+  .upload-button:hover {
+    background-color: #155a3b; /* Darker shade on hover */
+  }
+  
+  .delete-button:hover {
+    background-color: #e04e39; /* Darker shade on hover */
+  }
+  
+  .delete-button:disabled {
+    background-color: #ccc; /* Gray when disabled */
+    cursor: not-allowed; /* Not allowed cursor */
+  }
+  
+  .update-profile-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    margin-top: 20px;
+    width: 86%;
+    position: relative; /* To position the label correctly */
+    margin-left: 3%;
+   
+   
+  }
+  
+  .update-profile-container h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    margin-top: 0%;
+    color: #1a6f53;
+  
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px; /* Space between input fields */
+    margin-bottom: -7%;
+    padding: 35px;
+  }
+  
+  .form-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-field label{
+    font-family: 'Sharp Sans', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #1a6f53;
+    font-size: 22px;
+    margin-top: 2%;
+    margin-bottom: 1.5%;
+  }
+  .input-box {
+    width: 90%;
+  
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 1%;
+    font-size: 16px;
+    height: 30px;
+  }
+  
+  .textarea-box {
+   
+    width: 95% !important;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    height: 80px;
+  }
+  .form-row:last-child {
+    margin-bottom: -25px; /* Space below the last row */
+}
+.save-container
+{
+  display: flex;
+  
+  margin-top: 25px; /* Space above buttons */
+  margin-left: 3.8%;
+}
+.save-button
+{
+  background-color: #1a6f53; /* Background color */
+  color: white; /* Text color */
+  
+}
+.save-button:hover {
+  background-color: #4caf50; /* Darker shade on hover */
+}
+.cancel2-button
+{
+  border: 2px solid #1a6f53 !important;
+  background-color: white;
+  margin-left: 2%;
+ 
+}
+.cancel2-button:hover
+{
+ background-color: #1a6f53;
+ color: white;
+}
+.save-button, .cancel2-button {
+  padding: 10px 20px; /* Padding for buttons */
+  border: none; /* Remove border */
+  border-radius: 15px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s; /* Transition for hover effect */
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
