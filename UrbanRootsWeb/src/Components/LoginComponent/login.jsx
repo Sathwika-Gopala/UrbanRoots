@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import NavBar from "../landingPageComponent/NavBar"; // Import your NavBar
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"; // Import axios for API calls
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0894bd19f2e9551da17f244baf65649c84e00e6f
 import '@fortawesome/fontawesome-free/css/all.min.css'; // For Font Awesome icons
 
 function Login() {
@@ -51,10 +54,7 @@ function Login() {
 
   return (
     <div>
-      {/* Include NavBar at the top */}
       <NavBar />
-      <div class="full-height-container">
-   
 
       <div className="login-page">
         
@@ -77,9 +77,6 @@ function Login() {
                 className="login-input"
                 required
               />
-            </div>
-
-            <div className="login-input-group">
               <label htmlFor="password" className="login-label">Password:</label>
               <input
                 type="password"
@@ -101,7 +98,7 @@ function Login() {
           </form>
 
           {showModal && (
-             <div className="modal">
+            <div className="modal">
              <div className="modal-content animated">
                <span className="close" onClick={() => setShowModal(false)}>&times;</span>
                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
@@ -115,7 +112,6 @@ function Login() {
             </div>
           )}
         </div>
-      </div>
       </div>
     </div>
   );

@@ -1,31 +1,21 @@
-/* Login.css */
-.full-height-container {
-  display: flex;
-    flex-direction: column;
-    height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; 
-}
+
 
 .login-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
+  height: 40.8vw; /* Full viewport height */
+  width: 99vw; /* Full viewport width */
   background-image: url('../../assets/g1.avif'); /* Use your image path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
- 
-
+  background-size: cover; /* Cover the entire page */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  position: relative; /* Make it relative to position children properly */
 }
 
 .login-form {
   background-color: #fff;
-  padding: 20px;
+  padding: 10px 5px 20px 20px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -33,14 +23,13 @@
   justify-content: center;
   align-items: center;
   width: 30%;
-  max-width: 400px; /* Cap width for large screens */
-  height: auto; /* Remove fixed height for flexibility */
-  margin-top: -3%;
-  margin-left: 3.5%;
-
+  max-width: 400px; 
+  height: auto;
+  position: relative; 
+  margin-left: 1.5%;
 }
 
-  
+
   h2 {
     text-align: center; /* Center the heading */
     color: #1a6f53;
@@ -49,11 +38,11 @@
   }
   
   .login-input-group {
-    width: 100%;
+    width: fit-content;
   }
   
   .login-label {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
   color: #1a6f53;
   margin-bottom: 4%; /* Gap between label and input */
   font-weight: bold;
@@ -86,6 +75,9 @@
     cursor: pointer;
     font-size: 23px;
   }
+  .login-button:hover {
+    background-color: #1a6f53;
+  }
   
   .login-error-message {
     margin-top: 20px;
@@ -117,7 +109,7 @@
   }
   
   .signup-redirect a {
-    color: blue; /* Make the link blue or any color you prefer */
+    color: #1a6f53; /* Make the link blue or any color you prefer */
     text-decoration: none;
   }
   

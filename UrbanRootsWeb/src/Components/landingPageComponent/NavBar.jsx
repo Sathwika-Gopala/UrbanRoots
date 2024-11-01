@@ -12,7 +12,6 @@ const NavBar = () => {
     const [username, setUsername] = useState(null);
     const menuOptions = [
         { text: "Home", path: "/landingPage" },
-        { text: "About", path: "/about" },
         { text: "Events", path: "/events" },
         { text: "Discuss", path: "/discussions" },
         { text: "Resources", path: "/resources" },
