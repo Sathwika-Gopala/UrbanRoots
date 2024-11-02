@@ -1029,3 +1029,103 @@ nav {
 .star.filled {
     color: orange; /* Color for selected stars */
 }
+
+
+/* Forum Header */
+.forum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #e2f0d9;
+}
+
+.forum-header h1 {
+  font-size: 24px;
+}
+
+.new-post-button {
+  padding: 10px 20px;
+  background-color: #47a865;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.new-post-button:hover {
+  background-color: #3d8a52;
+}
+
+/* Post List */
+.post-list {
+  padding: 16px;
+}
+
+.post-item {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #d1d1d1;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.post-item:hover {
+  background-color: #eaf2e2;
+  transform: scale(1.02);
+}
+
+/* Post Modal */
+.post-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.post-modal h2 {
+  margin-top: 0;
+}
+
+.post-modal input,
+.post-modal textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.post-modal button {
+  padding: 10px;
+  background-color: #47a865;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.post-modal button:hover {
+  background-color: #3d8a52;
+}
