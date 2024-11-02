@@ -6,6 +6,7 @@ import profileIcon from "../../assets/profileIconbg.png";
 import eventIcon from "../../assets/star1.png";
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
+import { FaSignOutAlt } from 'react-icons/fa';
 const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
   const [fileName, setFileName] = useState(''); // Define fileName state
   const handleImageChange = async (event) => {
@@ -230,7 +231,7 @@ function Profile() {
           <div className='logoutButton' onClick={handleLogout} style={{ cursor: 'pointer' }}>
             <li style={{ color: '#FF6347', fontSize: '24px' }}>
               <span className="logoutIcon">
-                <i className="fas fa-sign-out-alt"></i>
+                <FaSignOutAlt/>
               </span> Logout
             </li>
           </div>
