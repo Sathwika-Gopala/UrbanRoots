@@ -300,3 +300,27 @@
     max-width: 100%;
   }
 }
+.login-redirect {
+  text-align: center; /* Center text */
+  margin-top: 0px; /* Add some space above */
+}
+
+.login-redirect p {
+  color: #1D1934;
+  margin: 0px 0px 7px;
+  font-size: 15.6px;
+  margin-top: 2%;
+  font-style: bold;
+  font-weight: 500;
+  font-family: Poppins, sans-serif;
+
+}
+
+.login-redirect a {
+  color: #1a6f53; /* Make the link blue or any color you prefer */
+  text-decoration: none;
+}
+
+.login-redirect a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
