@@ -56,7 +56,7 @@ function Signup() {
         formData
       );
       console.log(response.data);
-      navigate("/landingPage"); // Redirect on success
+      navigate("/login"); // Redirect on success
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.error);
