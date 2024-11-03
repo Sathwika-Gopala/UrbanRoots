@@ -61,15 +61,15 @@ app.post('/api/signup', async (req, res) => {
 
 // Route for user login
 app.post('/api/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username || !password) {
+  if (!email || !password) {
     return res.status(400).json({ error: 'Username and password are required.' });
   }
 
   try {
-    const userQuery = 'SELECT * FROM users WHERE username = $1';
-    const userResult = await pool.query(userQuery, [username]);
+    const userQuery = 'SELECT * FROM users WHERE email = $1';
+    const userResult = await pool.query(userQuery, [email]);
 
     if (userResult.rows.length === 0) {
       return res.status(401).json({ error: 'Incorrect username or password.' });
