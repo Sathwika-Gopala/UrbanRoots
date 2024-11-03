@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import NavBar from "../landingPageComponent/NavBar"; // Import your NavBar
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"; // Import axios for API calls
-<<<<<<< HEAD
-
-=======
->>>>>>> 0894bd19f2e9551da17f244baf65649c84e00e6f
 import '@fortawesome/fontawesome-free/css/all.min.css'; // For Font Awesome icons
 
 function Login() {
