@@ -4,6 +4,11 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaDollarSign } from 'react-icons/fa';
 import events1 from "../../assets/Kid'sGardeningDay.png"; 
 import events2 from "../../assets/basicWorkshop.png";
 import events3 from "../../assets/DIY Garden Decor Workshop.png";
+import events4 from "../../assets/Medicinal Herb Gardening.png";
+import events5 from "../../assets/events4.png";
+import events6 from "../../assets/events5.png";
+import events7 from "../../assets/events6.png";
+
 import "./Events.css";
 import { useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -45,19 +50,68 @@ const Events = () => {
     },
     {
       id: 3,
-      title: "DIY Garden Decor Workshop",
+      title: "Medicinal Herb Gardening",
       date: "January 15, 2025",
+      location: "Greens Community Garden",
+      cost: "250 Rs",
+      image: events4,
+      availableSeats: 50,
+      description: "Learn about medicinal plants, their uses, and how to cultivate them at home. Create your own herbal remedies using herbs grown on-site."
+    },
+    {
+      id: 4,
+      title: "DIY Garden Decor Workshop",
+      date: "Februray 01, 2025",
       location: "City Greenhouse Studio",
       cost: "150 Rs",
       image: events3,
       availableSeats: 30,
       description: "Add charm to your garden with handmade, eco-friendly decor! Perfect for beginners and plant lovers alike."
-    }
+    },
+    {
+      id: 5,
+      title: "Permaculture Design Workshop",
+      date: "Februray 20, 2025",
+      location: "City Greenhouse Studio",
+      cost: "150 Rs",
+      image: events5,
+      availableSeats: 20,
+      description: "Dive into sustainable gardening by learning the principles of permaculture. Design an eco-friendly garden layout that maximizes natural resources."
+    },
+    {
+      id: 6,
+      title: "Monthly Garden Walk",
+      date: "March 15, 2025",
+      location: "Riverside Botanical Park",
+      cost: "150 Rs",
+      image: events6,
+      availableSeats: 20,
+      description: "Explore the beauty of seasonal plants and learn gardening tips with our expert guides."
+    },
+    {
+      id: 7,
+      title: "Nature Art Day",
+      date: "April 20, 2025",
+      location: "City Greenhouse Studio",
+      cost: "150 Rs",
+      image: events7,
+      availableSeats: 20,
+      description: "Encourage participants to collect leaves, twigs, stones, and flowers to create nature-inspired art. This could include rock painting, leaf rubbings, or flower mandalas"
+    },
+    
   ];
 
   const handleBookNow = (event) => {
-    setCurrentEvent(event);
-    setIsDialogOpen(true);
+    const userData = localStorage.getItem("userData");
+
+    if (userData) {
+      // If user is logged in, proceed to the booking page or open dialog
+      setCurrentEvent(event);
+      setIsDialogOpen(true);
+    } else {
+      // If user is not logged in, redirect to the login page
+      navigate("/login");
+    }
   };
 
   const handleCloseDialog = () => {
@@ -87,9 +141,6 @@ const Events = () => {
             <span><FaCalendarAlt className="icon" /> <strong>Date:</strong> {events[0].date}</span><br />
             <span><FaMapMarkerAlt className="icon" /> <strong>Location:</strong> {events[0].location}</span><br />
             <span><FaDollarSign className="icon" /> <strong>Cost:</strong> {events[0].cost}</span><br /><br />
-            
-      <strong className="availableseats">Available Seats: </strong> <strong>{events[0].availableSeats}</strong><br></br>
-   
             <span className="highlight">Why Attend?</span><br />
             {events[0].description}
           </p>
@@ -121,6 +172,7 @@ const Events = () => {
           ))}
         </div>
       </div>
+      
 
       {/* Booking Dialog */}
       {isDialogOpen && currentEvent && (
