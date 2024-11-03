@@ -357,6 +357,7 @@ nav {
     padding-left: 5px !important;
     outline: 0;
     bottom: 5% !important;
+
   }
   
   .myCarousel h3 {
@@ -1028,4 +1029,283 @@ nav {
 
 .star.filled {
     color: orange; /* Color for selected stars */
+}
+
+
+/* Forum Header */
+.forum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #e2f0d9;
+}
+
+.forum-header h1 {
+  font-size: 24px;
+}
+
+.new-post-button {
+  padding: 10px 20px;
+  background-color: #47a865;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.new-post-button:hover {
+  background-color: #3d8a52;
+}
+
+/* Post List */
+.post-list {
+  padding: 16px;
+}
+
+.post-item {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #d1d1d1;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.post-item:hover {
+  background-color: #eaf2e2;
+  transform: scale(1.02);
+}
+
+/* Post Modal */
+.post-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.post-modal h2 {
+  margin-top: 0;
+}
+
+.post-modal input,
+.post-modal textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.post-modal button {
+  padding: 10px;
+  background-color: #47a865;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.post-modal button:hover {
+  background-color: #3d8a52;
+}
+/* payment.css */
+
+.payment-page {
+  background-color: #EAFFEA; /* Soft light green background */
+  color: #2c3e50; /* Darker text for contrast and readability */
+  font-family: 'Helvetica Neue', sans-serif; /* Modern and clean font */
+  padding: 30px;
+  border-radius: 12px; /* More rounded corners for a softer look */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
+  max-width: 500px; /* Limit the width for focused content */
+  border: none; /* Soft border to enhance the gardening theme */
+  margin-left: 32%;
+  margin-top: 1%;
+}
+
+.payment-page h2 {
+  font-size: 26px;
+  color: #4caf50; /* Green for the title, aligning with the gardening theme */
+  margin-bottom: 15px;
+  text-align: center; /* Centering the title */
+  margin-top: -3%;
+}
+
+.payment-page h3 {
+  font-size: 22px;
+  color: #333; /* Dark text for headings */
+  margin-top: 25px; /* Space above user details */
+  text-align: left; /* Align headings to the left */
+}
+.payment-page h4 {
+  font-size: large;
+  color: #4caf50; /* Green for the title, aligning with the gardening theme */
+  text-align: center; /* Centering the title */
+  margin-top: -2%;
+}
+
+.cost-p {
+  font-size: 23px;
+  display: block;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  color: #1A6F53;
+}
+.user-details {
+  background-color: #e8f5e9; /* Light green background for user details */
+  padding: 10px; /* Padding for user details */
+  border-radius: 8px; /* More rounded corners for a softer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-top: 20px; /* Space above the user details box */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+  margin-bottom: 2%;
+}
+
+.user-details:hover {
+  transform: scale(1.02); /* Slightly enlarge on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+.user-details h3{
+  display: block;
+  text-align: start;
+  margin-top: 0%;
+}
+.user-details p {
+  font-size: 18px; /* Larger font size for details */
+  margin-left: 25%; /* Spacing between user detail lines */
+  text-align: start; /* Center text alignment */
+  color: #333; /* Darker text color for readability */
+  position: relative; /* Positioning for pseudo-elements */
+}
+
+.user-details p::before {
+  content: '🌱'; /* Emoji or icon to represent user info */
+  position: absolute;
+  left: -40px; /* Adjust position */
+  top: 0;
+  font-size: 22px; /* Size of the emoji/icon */
+  animation: bounce 1s infinite; /* Optional animation for effect */
+}
+
+/* Keyframe animation for bouncing effect */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px); /* Bounce effect */
+  }
+}
+
+
+.payment-page .button {
+  background-color: #4caf50; /* Green button */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 20px; /* Larger padding for a more substantial button */
+  border-radius: 6px; /* Rounded corners */
+  font-size: 18px; /* Larger font size for button */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+.payment-page .button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+.payment-image {
+    display: block; /* Makes the image a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+    width: 35%; /* Set the width to 80% of its container */
+    height: auto; /* Maintain the aspect ratio of the image */
+    max-width: 300px; /* Limit the maximum width */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds subtle shadow */
+}
+.notification-banner {
+  background-color: #ffeb3b; /* Yellow background for attention */
+  color: #333; /* Darker text for readability */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px; /* Space above the banner */
+  text-align: center; /* Center text */
+  position: relative; /* Position for potential enhancements */
+  animation: slide-in 0.5s ease-out; /* Slide in animation */
+}
+
+/* Keyframe animation for slide-in effect */
+@keyframes slide-in {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.notification-button {
+  background-color: #4caf50; /* Green button */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 20px; /* Padding for the button */
+  border-radius: 6px; /* Rounded corners */
+  font-size: 18px; /* Font size for button */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+  display: block;
+  margin: auto;
+}
+
+.notification-button:hover {
+  background-color: #1A6F53; /* Darker green on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.notification-banner {
+  background-color: #ffeb3b; /* Yellow background for attention */
+  color: #333; /* Darker text for readability */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto; /* Center the banner */
+  text-align: center; /* Center text */
+  z-index: 1000; /* Ensure it appears above other elements */
+  animation: slide-in 0.5s ease-out; /* Slide in animation */
+  display: block; /* Initially hidden */
+}
+
+/* Keyframe animation for slide-in effect */
+@keyframes slide-in {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
 }

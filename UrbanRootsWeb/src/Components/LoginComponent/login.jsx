@@ -35,7 +35,7 @@ function Login() {
       // Handle success
       localStorage.setItem("userData", JSON.stringify(response.data));
       console.log(response.data);
-      navigate("/profile"); // Redirect on success
+      navigate("/landingPage"); // Redirect on success
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // Show error message if username and password don't match

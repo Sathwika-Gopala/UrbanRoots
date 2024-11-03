@@ -5,8 +5,11 @@ import events1 from "../../assets/Kid'sGardeningDay.png";
 import events2 from "../../assets/basicWorkshop.png";
 import events3 from "../../assets/DIY Garden Decor Workshop.png";
 import "./Events.css";
+import { useNavigate } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Events = () => {
+  const navigate = useNavigate();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedSeats, setSelectedSeats] = useState(1);
   const [currentEvent, setCurrentEvent] = useState(null);
@@ -35,7 +38,7 @@ const Events = () => {
       title: "Gardening Basics Workshop",
       date: "December 2, 2024",
       location: "Urban Park Center",
-      cost: "Free",
+      cost: "50 Rs",
       image: events2,
       availableSeats: 20,
       description: "A beginner's session teaching essential gardening skills, like soil preparation, planting, and watering techniques."
@@ -63,6 +66,8 @@ const Events = () => {
   };
 
   const handleProceedToPayment = () => {
+    const totalCost = selectedSeats * parseInt(currentEvent.cost.replace(/\D/g, ''));
+    navigate('/payment', { state: { currentEvent, selectedSeats, totalCost } });
     console.log(`Proceeding to payment for ${selectedSeats} seats at ${currentEvent.title}`);
     handleCloseDialog();
   };
@@ -95,7 +100,7 @@ const Events = () => {
       {/* Upcoming Events Section */}
       <div className="upcoming-events-section">
         <h3 className="upcoming-heading">
-          <i className="fas fa-calendar-alt"></i> Upcoming Events
+          <FaCalendarAlt/> Upcoming Events
         </h3>
         <h5>Secure your spot and help create a greener city!</h5>
         <div className="upcoming-events-container">
@@ -105,9 +110,9 @@ const Events = () => {
               <div className="upcoming-event-details">
                 <p className='event-box-heading'>{event.title}</p>
                 <h4 className="why-attend">{event.description}</h4>
-                <p className='event-box-p'><i className="fas fa-calendar-alt"></i> {event.date}</p>
-                <p className='event-box-p'><i className="fas fa-map-marker-alt"></i> {event.location}</p>
-                <p className='event-box-p'><i className="fas fa-tag"></i> {event.cost}</p>
+                <p className='event-box-p'><FaCalendarAlt/> {event.date}</p>
+                <p className='event-box-p'><FaMapMarkerAlt/> {event.location}</p>
+                <p className='event-box-p'><FaDollarSign/> {event.cost}</p>
                 <div className="upcoming-buttons">
                   <button className="button explore-button" onClick={() => handleBookNow(event)}>Book Now</button>
                 </div>
@@ -144,17 +149,16 @@ const Events = () => {
     </label>
   
       <div className="dialog-buttons">
-        <button className="proceed-button" onClick={handleProceedToPayment}>
-           Proceed to Payment
-        </button>
         <button className="dialogcancel-button" onClick={handleCloseDialog}>
            Cancel
+        </button>
+        <button className="proceed-button" onClick={handleProceedToPayment}>
+           Proceed to Payment
         </button>
       </div>
     </div>
   </div>
   
-      
       )}
     </div>
   );
