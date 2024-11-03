@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import NavBar from "../landingPageComponent/NavBar";
 import sideImage from "../../assets/loginPage1bg.png"; // Your image path
 import axios from "axios"; // Import axios for API calls
@@ -168,6 +168,9 @@ function Signup() {
         Cancel
       </button>
       <button type="submit" className="button-submit">Sign Up</button>
+    </div>
+    <div className="login-redirect">
+              <p>Already a User ? <Link to="/login">Login </Link></p>
     </div>
   </form>
 </div>
