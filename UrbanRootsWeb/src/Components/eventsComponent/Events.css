@@ -148,9 +148,10 @@
   margin-left: 3%;
 }
 .upcoming-events-container {
+  margin-left: 3%;
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 80px;
   margin-top: 4%
 }
 
