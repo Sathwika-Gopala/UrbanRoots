@@ -70,13 +70,13 @@ const Events = () => {
     },
     {
       id: 5,
-      title: "Permaculture Design Workshop",
+      title: "Permaculture Workshop",
       date: "Februray 20, 2025",
       location: "City Greenhouse Studio",
       cost: "150 Rs",
       image: events5,
       availableSeats: 20,
-      description: "Dive into sustainable gardening by learning the principles of permaculture. Design an eco-friendly garden layout that maximizes natural resources."
+      description: "Learn the principles of permaculture. Design an eco-friendly garden layout that maximizes natural resources."
     },
     {
       id: 6,
@@ -86,7 +86,7 @@ const Events = () => {
       cost: "150 Rs",
       image: events6,
       availableSeats: 20,
-      description: "Explore the beauty of seasonal plants and learn gardening tips with our expert guides."
+      description: "Explore the beauty of seasonal plants and learn gardening tips with our expert guides with a peaceful garden walk."
     },
     {
       id: 7,
@@ -96,7 +96,7 @@ const Events = () => {
       cost: "150 Rs",
       image: events7,
       availableSeats: 20,
-      description: "Encourage participants to collect leaves, twigs, stones, and flowers to create nature-inspired art. This could include rock painting, leaf rubbings, or flower mandalas"
+      description: "Collect leaves, twigs, stones, and flowers to create nature-inspired art including rock paintings, leave mandalas, etc.,"
     },
     
   ];
