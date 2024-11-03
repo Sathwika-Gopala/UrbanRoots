@@ -79,7 +79,7 @@ function Signup() {
             <img src={sideImage} alt="Nature Side" className="side-image" />
           </div>
           <div className="text-container">
-            <h2>Welcome</h2>
+            <h2>Welcome!</h2>
             <p>
               "Join a community where nature, learning, and connection thrive.
               Together, we create space for growth, sustainability, and
@@ -169,10 +169,10 @@ function Signup() {
       </button>
       <button type="submit" className="button-submit">Sign Up</button>
     </div>
-    <div className="login-redirect">
-              <p>Already a User ? <Link to="/login">Login </Link></p>
-    </div>
   </form>
+    <div className="login-redirect">
+      <p>Already a User ? <Link to="/login">Login </Link></p>
+    </div>
 </div>
 {showModal && (
  <div className="modal">

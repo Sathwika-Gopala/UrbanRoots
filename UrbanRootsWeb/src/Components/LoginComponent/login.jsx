@@ -6,7 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // For Font Awesome icon
 
 function Login() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: ""
   });
 
@@ -53,12 +53,7 @@ function Login() {
       <NavBar />
 
       <div className="login-page">
-        
-        {/* <div className="image-side">
-          <img src={sideImage} alt="Login side" />
-        </div> */}
-
-        {/* Login form */}
+        <h1>Welcome Back, Green Thumb!</h1>
         <div className="login-form">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -66,10 +61,10 @@ function Login() {
               <label htmlFor="username" className="login-label">Username:</label>
               <input
                 type="text"
-                id="username"
-                value={formData.username}
+                id="email"
+                value={formData.email}
                 onChange={handleInputChange}
-                placeholder="Username"
+                placeholder="Email"
                 className="login-input"
                 required
               />

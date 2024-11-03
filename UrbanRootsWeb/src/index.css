@@ -353,11 +353,10 @@ nav {
     height: 286px;
   }
   
-  .carousel .control-dots {
+  .carousel-container .carousel .control-dots {
     padding-left: 5px !important;
     outline: 0;
     bottom: 5% !important;
-
   }
   
   .myCarousel h3 {
@@ -405,11 +404,24 @@ nav {
     line-height: 0;
   }
   
-  .carousel .control-dots .dot {
-    box-shadow: none !important;
-    background: #454545 !important;
-    outline: 0;
-  }
+  .carousel-container .carousel .control-dots .dot {  
+    width: 2px !important;            /* Set width for smaller dots */
+    height: 2px !important;           /* Set height for smaller dots */
+    border-radius: 50% !important; 
+    background-color: #666 !important; /* Neutral color for default state */
+    margin: 0 6px !important;          /* Increased spacing between dots */
+    transition: background-color 0.3s ease, transform 0.3s ease !important; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+.carousel .control-dots .dot:hover,
+.carousel .control-dots .dot:active,
+.carousel .control-dots .dot.selected {
+    background-color: #1a6f53 !important; /* Change to your theme color when active */
+    transform: scale(1.2);               /* Slightly enlarge the active dot */
+}
+
+
   
   .carousel.carousel-slider .control-arrow {
     background: #000 !important;
@@ -696,8 +708,8 @@ nav {
   
   .blog-goBack {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    top: 2rem;
+    left  : 0.8rem;
     text-decoration: none;
     font-size: 1.1rem;
     color: #fff;

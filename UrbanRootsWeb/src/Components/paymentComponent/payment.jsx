@@ -55,7 +55,7 @@ const Payment = () => {
                     <p>Contact: {userData.contact}</p>
                 </div>
                 <button className="notification-button" onClick={handleShowNotification}>
-                    Pay
+                    Pay ₹{totalCost}
                 </button>
             </div>
         </div>
