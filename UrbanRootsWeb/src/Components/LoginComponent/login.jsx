@@ -26,13 +26,12 @@ function Login() {
     e.preventDefault();
 
     try {
-      // Send login data to the backend API
+      // Sending login data to the backend API
       const response = await axios.post(
         "http://localhost:5000/api/login",
         formData
       );
 
-      // Handle success
       localStorage.setItem("userData", JSON.stringify(response.data));
       console.log(response.data);
       navigate("/events"); // Redirect on success

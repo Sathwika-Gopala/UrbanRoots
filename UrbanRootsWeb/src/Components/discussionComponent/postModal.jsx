@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 
 const PostModal = ({ isOpen, onClose, onPostCreate }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [userData, setUserData] = useState({
+    name: '',
+});
 
+useEffect(() => {
+  // Fetch user data from local storage
+  const storedUserData = localStorage.getItem('userData');
+  if (storedUserData) {
+      const parsedData = JSON.parse(storedUserData);
+      setUserData({
+          name: parsedData.username || '',
+      });
+  }
+}, []);
   const handleCreatePost = () => {
-    onPostCreate({ title, content, author: 'Current User', date: new Date() });
+    onPostCreate({ title, content, author: userData.name, date: new Date() });
     setTitle('');
     setContent('');
     onClose();

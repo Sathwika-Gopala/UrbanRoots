@@ -3,7 +3,7 @@ import NavBar from './NavBar'
 import bg from '../../assets/bg.png'
 import bgcrop from '../../assets/bgcrop.png'
 import { useNavigate } from 'react-router-dom'
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 import resourcesLandingPage from '../../assets/images/resourcesLandingPage.png';
 import calenderLandingPage from '../../assets/images/calenderLandingPage.jpg';

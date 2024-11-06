@@ -76,17 +76,16 @@
   
 }
 
-/* Ensure there's space between label and input */
 .input-group label {
   font-size: 1.2rem;
   color: #1a6f53;
-  margin-bottom: 2px; /* Gap between label and input */
+  margin-bottom: 2px;
   font-weight: bold;
 }
 
 .input-group input {
   padding: 10px;
-  margin-top: 5px; /* Increase space between label and input */
+  margin-top: 5px; 
   border: 1px solid #ccc;
   border-radius: 12px;
   font-size: 1rem;
@@ -95,10 +94,10 @@
  
 }
 
-/* Form layout */
+
 .sign-up-form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 20px 30px;
 }
 
@@ -107,7 +106,7 @@
   color: #1a6f53;
   margin-bottom: 5px;
   font-family: sans-serif;
-  grid-column: span 2; /* Ensure labels span full width */
+  grid-column: span 2; 
 }
 
 .sign-up-form input {
@@ -125,7 +124,7 @@
   outline: none;
 }
 .sign-up-form .full-width {
-  grid-column: span 2; /* Spans both columns */
+  grid-column: span 2; 
 }
 
 
@@ -176,26 +175,26 @@
   color: white;
 }
 .modal {
-  display: flex; /* Use flexbox to center the modal */
+  display: flex; 
   position: fixed;
-  z-index: 1000; /* Ensure the modal is on top */
+  z-index: 1000; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4); /* Black with transparency */
-  animation: fadeIn 0.5s; /* Fade in animation */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.4); 
+  animation: fadeIn 0.5s; 
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto; 
   padding: 20px;
   border: 1px solid #888;
-  width: 30%; /* Could be more or less, depending on screen size */
+  width: 30%; 
   height: 35%;
-  animation: slideIn 0.5s; /* Slide in animation */
+  animation: slideIn 0.5s; 
   border-radius: 15px;
 }
 
@@ -243,44 +242,44 @@
   width: 30%;
   flex: 1;
 
-  margin: 18px auto;  /* Center horizontally */
-  display: block;     /* Ensure it behaves as a block-level element */
+  margin: 18px auto;  
+  display: block;     
   text-align: center;
   
   
 }
 .circle-cross {
-  width: 250px;  /* Final circle size */
+  width: 250px;  
   height: 250px;
   border-radius: 50%;
-  border: 2px solid transparent;  /* Start with no border */
+  border: 2px solid transparent;  
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: growCircle 1s ease-out forwards;  /* Add animation */
+  animation: growCircle 1s ease-out forwards;  
 }
 
 .cross-sign {
   color: red;
-  font-size: 60px;  /* Increase cross size */
+  font-size: 60px;  
 }
-/* Keyframes to animate the circle around the cross */
+
 @keyframes growCircle {
   0% {
     width: 0;
     height: 0;
-    border: 2px solid transparent;  /* Hidden initially */
+    border: 2px solid transparent;  
   }
   50% {
-    width: 100px;  /* Mid-animation circle size */
+    width: 100px;  
     height: 100px;
     border: 2px solid red;
-    border-radius: 50%;  /* Ensure it stays circular */
+    border-radius: 50%; 
   }
   100% {
-    width: 90px;  /* Final larger circle size */
+    width: 90px; 
     height: 90px;
-    border: 2px solid red;  /* Fully visible border */
+    border: 2px solid red; 
     border-radius: 50%;
   }
 }
@@ -301,8 +300,8 @@
   }
 }
 .login-redirect {
-  text-align: center; /* Center text */
-  margin-top: 0px; /* Add some space above */
+  text-align: center; 
+  margin-top: 0px;
 }
 
 .login-redirect p {
@@ -317,10 +316,10 @@
 }
 
 .login-redirect a {
-  color: #1a6f53; /* Make the link blue or any color you prefer */
+  color: #1a6f53; 
   text-decoration: none;
 }
 
 .login-redirect a:hover {
-  text-decoration: underline; /* Add underline on hover */
+  text-decoration: underline; 
 }
