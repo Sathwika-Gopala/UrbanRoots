@@ -33,13 +33,13 @@ const Feedback = ({ onClose }) => {
         const successConfirm = window.confirm('Feedback Submitted')
         console.log('Feedback submitted:', { rating: currentVal, comment });
 
-        // Reset states after submission
+        // Resetting states after submission
         setCurrentVal(0);
         setHoverVal(undefined);
         setComment('');
         setError('');
 
-        onClose(); // Call the onClose function to close the modal
+        onClose(); 
     };
 
     return (
