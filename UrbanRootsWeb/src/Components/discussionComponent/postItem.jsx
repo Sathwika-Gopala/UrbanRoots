@@ -1,5 +1,4 @@
 import React, {useState}from 'react';
-
 const DeleteIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 16 16">
     <path d="M2 1.5h12a.5.5 0 0 1 .5.5v1h-13v-1a.5.5 0 0 1 .5-.5zM2 3h12v11a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3zm3 1v8m2-8v8m2-8v8" strokeWidth="1.5" />
@@ -31,14 +30,13 @@ const PostItem = ({ post, onSelectPost, onDeletePost }) => {
   const handleLikeToggle = () => {
     setIsLiked(!isLiked);
   };
-  
   return (
     <div className="post-item">
       <h3 onClick={() => onSelectPost(post.id)}>{post.title}</h3>
       <h4>{post.content}</h4>
       <p>by {post.author}</p>
       <span>{formattedDate}</span>
-      <span>{repliesCount} replies</span>
+      {/* <span>{repliesCount} replies</span> */}
       <div className="post-icons">
         <button onClick={() => onDeletePost(post.id)} className='deleteButton'>
           <DeleteIcon />

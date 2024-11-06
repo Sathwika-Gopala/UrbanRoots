@@ -5,7 +5,7 @@ const CommentSection = ({ comments, onCommentAdd }) => {
 
   const handleAddComment = () => {
     if (newComment.trim()) {
-      onCommentAdd({ text: newComment, date: new Date() }); // Include date or any other necessary info
+      onCommentAdd({ text: newComment, date: new Date() }); 
       setNewComment('');
     }
   };
