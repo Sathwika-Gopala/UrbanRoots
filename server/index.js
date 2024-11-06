@@ -9,7 +9,10 @@ const { Pool } = pkg;
 import dotenv from 'dotenv';
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
-
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
@@ -20,7 +23,13 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
 });
-
+// const __dirname = path.dirname(new URL(import.meta.url).pathname);
+// const postsFilePath = path.join(__dirname, 'posts.json');
+// const postsFilePath = 'D:/UrbanRoots/UrbanRoots/server/posts.json';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// console.log(postsFilePath)
+const postsFilePath = path.join(__dirname, 'posts.json');
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -34,6 +43,20 @@ const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_SECRET,
 });
+// Read posts from file
+const readPostsFromFile = () => {
+  try {
+    const data = fs.readFileSync(postsFilePath, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    return []; // If file doesn't exist, return empty array
+  }
+};
+
+// Write posts to file
+const writePostsToFile = (posts) => {
+  fs.writeFileSync(postsFilePath, JSON.stringify(posts, null, 2));
+};
 
 // Route for user signup
 app.post('/api/signup', async (req, res) => {
@@ -109,7 +132,59 @@ app.post('/api/upload-profile-picture', upload.single('image'), async (req, res)
   }
 });
 
-// Endpoint to create an order
+// Route to create a new post
+app.post('/api/posts', (req, res) => {
+  const { title, content, author } = req.body;
+  
+  const posts = readPostsFromFile();
+  const newPost = {
+    id: posts.length + 1,
+    title,
+    content,
+    author,
+    date: new Date().toISOString(),
+    comments: []
+  };
+  
+  posts.push(newPost);
+  writePostsToFile(posts);
+  
+  res.status(201).json(newPost);
+});
+
+// Route to get all posts
+app.get('/api/posts', (req, res) => {
+  const posts = readPostsFromFile();
+  res.status(200).json(posts);
+});
+
+// Route to delete a post
+app.delete('/api/posts/:id', (req, res) => {
+  const postId = parseInt(req.params.id);
+  let posts = readPostsFromFile();
+  posts = posts.filter(post => post.id !== postId);
+  writePostsToFile(posts);
+  res.status(200).json({ message: 'Post deleted successfully' });
+});
+
+// Route to add a comment to a post
+app.post('/api/posts/:id/comments', (req, res) => {
+  const postId = parseInt(req.params.id);
+  const { comment } = req.body;
+
+  const posts = readPostsFromFile();
+  const post = posts.find(p => p.id === postId);
+
+  if (!post) {
+    return res.status(404).json({ message: 'Post not found' });
+  }
+
+  post.comments.push(comment);
+  writePostsToFile(posts);
+  res.status(200).json(post);
+});
+
+// Endpoint to create an order (Razorpay)
 app.post('/api/create-order', async (req, res) => {
   const { amount, currency } = req.body;
 
@@ -117,7 +192,7 @@ app.post('/api/create-order', async (req, res) => {
     const options = {
       amount: amount,
       currency: currency,
-      receipt: `receipt_order_${Math.floor(Math.random() * 10000)}`,
+      receipt: `receipt_order_${Math.floor(Math.random() * 10000)}`
     };
 
     const order = await razorpay.orders.create(options);
