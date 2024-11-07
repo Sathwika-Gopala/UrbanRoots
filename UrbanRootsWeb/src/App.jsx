@@ -8,11 +8,13 @@ import Events from './Components/eventsComponent/Events'
 import Discussions from './Components/discussionComponent/Discussions'
 import Resources from './Components/resourceComponent/Resources'
 import Contact from './Components/contactComponent/contact'
+import Contact from './Components/contactComponent/contact'
 import Profile from './Components/profileComponent/profile'
 import './Components/profileComponent/profile.css'
 import Blog from './Components/blogComponent/Blog'
 import FeedbackButton from './Components/feedbackComponent/feedbackButton'
 import Payment from './Components/paymentComponent/payment'
+import Chatbot from './Components/chatbotComponent/chatbotButton'
 function App() {
  
   return (
@@ -29,7 +31,9 @@ function App() {
        <Route path="/contact" element={<Contact/>}></Route>
        <Route path="/profile" element={<Profile/>}></Route>
        <Route path="/payment" element={<Payment/>}></Route>
+       {/* <Route path="/chatbot" element={<Chatbot/>}></Route> */}
       </Routes>
+      <Chatbot/>
       <FeedbackButton/>
      </BrowserRouter>
  
