@@ -1,0 +1,140 @@
+.chat-container {
+    width: fit-content;
+    height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+  }
+  
+  .chat-header {
+    background-color: #1a6f53;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  
+  .chat-messages div {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .user-message {
+    background-color: #d1ffd6;
+    align-self: flex-end;
+  }
+  
+  .bot-message {
+    background-color: #eafaea;
+  }
+  
+  .chat-input-container {
+    display: flex;
+    padding: 5px;
+    border-top: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  input[type='text'] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+  .chat-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: end; /* Center buttons */
+  }
+  
+  .chat-buttons button {
+    width: fit-content; /* Slight padding from edges */
+    padding: 8px;
+    margin: 8px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32); /* Gradient color */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  .chat-buttons button:hover {
+    background: linear-gradient(135deg, #66BB6A, #388E3C); /* Slightly lighter on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover */
+  }
+  
+  .chat-buttons button:active {
+    transform: translateY(1px); /* Pressed effect */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  /* Style the input container */
+.chat-input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f1f1f1; /* Light background for input area */
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  margin-top: 20px;
+  width: 87%; /* Ensure the container takes up full width */
+  max-width: 400px; /* Max width for the entire container */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Style for the input field */
+.chat-input-container input {
+ 
+  padding: 12px 20px; /* Make input larger */
+  font-size: 12px;
+  border: 2px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* White background for input */
+  outline: none; /* Remove the outline when clicked */
+  transition: border-color 0.3s ease;
+  width: auto; /* Make sure it takes the full available width */
+  max-width: 200px; /* Optional: Maximum width */
+}
+
+/* Style for the send button */
+.send-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 12px 24px; /* Sizable padding */
+  border: none;
+  border-radius: 2px; /* Rounded corners */
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 2px; /* Add some space between input and button */
+}
+
+.send-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: scale(1.05); /* Slight scale-up on hover */
+}
+
+.send-button:active {
+  transform: scale(1); /* Reset the scale when clicked */
+}

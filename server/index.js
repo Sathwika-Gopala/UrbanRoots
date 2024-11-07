@@ -35,6 +35,7 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_SECRET,
 });
 
+
 // Route for user signup
 app.post('/api/signup', async (req, res) => {
   const { username, email, password, location, contact } = req.body;
@@ -143,6 +144,31 @@ app.post('/api/payment-verification', (req, res) => {
   }
 });
 
+app.post('/api/chatbot', async (req, res) => {
+  const userMessage = req.body.message;
+
+  // If the user asks about events
+  if (userMessage.toLowerCase().includes('event') || userMessage.toLowerCase().includes('when')) {
+    try {
+      const response = await fetch('http://localhost:1337/api/events');
+      const events = await response.json();
+
+      if (events.data && events.data.length > 0) {
+        const eventsList = events.data.map(event => 
+          `Workshop: ${event.Name}\nDate: ${event.DateOfEvent}\nDescription: ${event.Description}`).join('\n\n');
+        return res.json({ reply: `Here are some upcoming events:\n\n${eventsList}` });
+      } else {
+        return res.json({ reply: 'Sorry, I couldn\'t find any upcoming events.' });
+      }
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      return res.json({ reply: 'Sorry, I encountered an error while fetching events.' });
+    }
+  }
+
+  // Default chatbot behavior for other queries
+  return res.json({ reply: 'I didn\'t quite get that. Could you rephrase?' });
+});
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
