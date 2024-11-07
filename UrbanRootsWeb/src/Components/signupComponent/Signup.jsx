@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import NavBar from "../landingPageComponent/NavBar";
-import sideImage from "../../assets/loginPage1bg.png"; // Your image path
-import axios from "axios"; // Import axios for API calls
+import sideImage from "../../assets/loginPage1bg.png"; 
+import axios from "axios"; 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -79,7 +79,7 @@ function Signup() {
             <img src={sideImage} alt="Nature Side" className="side-image" />
           </div>
           <div className="text-container">
-            <h2>Welcome</h2>
+            <h2>Welcome!</h2>
             <p>
               "Join a community where nature, learning, and connection thrive.
               Together, we create space for growth, sustainability, and
@@ -113,7 +113,6 @@ function Signup() {
         autoComplete="off"
       />
     </div>
-   {/* Contact No and Location on the same line */}
    <div className="input-group">
       <label htmlFor="contactNo">Contact No:</label>
       <input
@@ -136,7 +135,7 @@ function Signup() {
       />
     </div>
 
-    {/* Password and Confirm Password on the same line */}
+    
     <div className="input-group">
       <label htmlFor="password">Password:</label>
       <input
@@ -169,10 +168,10 @@ function Signup() {
       </button>
       <button type="submit" className="button-submit">Sign Up</button>
     </div>
-    <div className="login-redirect">
-              <p>Already a User ? <Link to="/login">Login </Link></p>
-    </div>
   </form>
+    <div className="login-redirect">
+      <p>Already a User ? <Link to="/login">Login </Link></p>
+    </div>
 </div>
 {showModal && (
  <div className="modal">

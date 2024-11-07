@@ -3,8 +3,11 @@ import NavBar from './NavBar'
 import bg from '../../assets/bg.png'
 import bgcrop from '../../assets/bgcrop.png'
 import { useNavigate } from 'react-router-dom'
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
+import resourcesLandingPage from '../../assets/images/resourcesLandingPage.png';
+import calenderLandingPage from '../../assets/images/calenderLandingPage.jpg';
+import communityLandingPage from '../../assets/images/communityLandingPage.png';
 const LandingPage = () => {
     const navigate = useNavigate();
     const handleSignup = () => {
@@ -35,17 +38,17 @@ const LandingPage = () => {
                 <div class="features-container">
                     <div className="feature">
                         <div class="feature-1" onClick={handleDiscussions}>
-                            <img src="https://cdn3.iconfinder.com/data/icons/business-finance-and-banking-10/66/172_social_group_social_class_cordial_group_group_social_organization_class_system-512.png" alt="Community Connect Icon" class="feature-icon"/>
+                            <img src={communityLandingPage} alt="Community Connect Icon" class="feature-icon"/>
                             <h3>Community Connect</h3>
                             <p>Meet fellow gardeners, share experiences and clear doubts.</p>
                         </div>
                         <div class="feature-2" onClick={handleExploreEvents}>
-                            <img src="https://icon-library.com/images/calendar-transparent-icon/calendar-transparent-icon-3.jpg" alt="Event Calendar Icon" class="feature-icon"/>
+                            <img src={calenderLandingPage} alt="Event Calendar Icon" class="feature-icon"/>
                             <h3>Event Calendar</h3>
                             <p>Stay updated on upcoming gardening events.</p>
                         </div>
                         <div class="feature-3" onClick={handleResources}>
-                            <img src="https://www.freeiconspng.com/uploads/book-stack-icon--icon-search-engine-16.png" alt="Resources Icon" class="feature-icon"/>
+                            <img src={resourcesLandingPage} alt="Resources Icon" class="feature-icon"/>
                             <h3>Resources</h3>
                             <p>Access a wealth of gardening resources and tips.</p>
                         </div>
@@ -86,6 +89,7 @@ const LandingPage = () => {
                 showStatus={false}
                 autoPlay={true}
                 interval={5000}
+                showIndicators={true}
                 >
                     <div>
                     <img src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Photos.png" />

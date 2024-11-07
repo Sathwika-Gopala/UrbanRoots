@@ -56,10 +56,10 @@ const NavBar = () => {
                     <a
                         key={item.text}
                         onClick={(e) => {
-                            e.preventDefault(); // Prevent the default anchor behavior
+                            e.preventDefault(); 
                             handleClick(index, item.path);
                         }}
-                        className={activeIndex === index ? 'active' : ''} // Apply active class
+                        className={activeIndex === index ? 'active' : ''} 
                         href="#"
                     >
                         {item.text}
@@ -72,7 +72,7 @@ const NavBar = () => {
             <div className='navbar-menu-container'>
                 <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
             </div>
-            {/* Making it responsive */}
+            
             <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
                 <Box sx={{ width: 250 }}
                     role="presentation"
