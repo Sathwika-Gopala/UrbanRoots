@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from "../landingPageComponent/NavBar";
-import './Profile.css'; // Import CSS for styling
+import './Profile.css'; 
 import profilePic from "../../assets/image2.avif";
 import profileIcon from "../../assets/profileIconbg.png";
-import eventIcon from "../../assets/star1.png";
+import { FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import { FaSignOutAlt } from 'react-icons/fa';
+import MyDiscussions from './MyDiscussions'; 
+
 const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
-  const [fileName, setFileName] = useState(''); // Define fileName state
+  const [fileName, setFileName] = useState('');
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
       const formData = new FormData();
-      formData.append('image', file); // This key should match what multer expects
-      formData.append('userId', profileData.id); // Assuming profileData has ID
+      formData.append('image', file);
+      formData.append('userId', profileData.id); 
   
       try {
         await axios.post('http://localhost:5000/api/upload-profile-picture', formData, {
           headers: {
-            'Content-Type': 'multipart/form-data', // Important to set the content type
+            'Content-Type': 'multipart/form-data',
           },
         });
         console.log('Profile picture uploaded successfully.');
@@ -29,16 +30,13 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
     }
   };
   
-  
   const triggerFileInput = () => {
-    document.getElementById('file-upload').click(); // Simulate click on hidden input
+    document.getElementById('file-upload').click();
   };
-  
-
 
   const handleDeletePhoto = () => {
     setSelectedImage(null);
-    setFileName(''); // Reset file name
+    setFileName('');
   };
 
   return (
@@ -107,7 +105,7 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
             <input 
               type="text" 
               className="input-box" 
-              value={profileData?.username || ''} // Use optional chaining for safety
+              value={profileData?.username || ''} 
               placeholder="Enter your name" 
             />
           </div>
@@ -116,7 +114,7 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
             <input 
               type="email" 
               className="input-box" 
-              value={profileData?.email || ''} // Use optional chaining for safety
+              value={profileData?.email || ''} 
               placeholder="Enter your email" 
             />
           </div>
@@ -136,7 +134,7 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
             <input 
               type="text" 
               className="input-box" 
-              value={profileData?.contact || ''} // Use optional chaining for safety
+              value={profileData?.contact || ''} 
               placeholder="Enter your contact number" 
             />
           </div>
@@ -145,7 +143,7 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
             <input 
               type="text" 
               className="input-box" 
-              value={profileData?.location || ''} // Use optional chaining for safety
+              value={profileData?.location || ''} 
               placeholder="Enter your location" 
             />
           </div>
@@ -166,41 +164,41 @@ const FavoriteEvents = () => (
   </div>
 );
 
-const Settings = () => (
-  <div>
-    <h2>Settings</h2>
-    <p>Your settings here.</p>
-  </div>
-);
-
 function Profile() {
   const [activeSection, setActiveSection] = useState('PersonalInfo');
-  const [selectedImage, setSelectedImage] = useState(null); // Move image state to Profile component
-  const [profileData, setProfileData] = useState(null); // Profile data state
-  const navigate = useNavigate(); // De
+  const [selectedImage, setSelectedImage] = useState(null); 
+  const [profileData, setProfileData] = useState(null); 
+  const [userPosts, setUserPosts] = useState([]); 
+  const navigate = useNavigate(); 
+
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
       const parsedData = JSON.parse(storedUserData);
-      setProfileData(parsedData); // Set profile data from localStorage
       setProfileData(parsedData);
-      setSelectedImage(parsedData.profileimage ? `data:image/png;base64,${parsedData.profileimage}` : null); // Set the profile picture if it exists
+      setSelectedImage(parsedData.profileimage ? `data:image/png;base64,${parsedData.profileimage}` : null);
+
+      // Fetch the user's posts
+      fetch(`http://localhost:5000/api/posts?userId=${parsedData.id}`)
+        .then((response) => response.json())
+        .then((data) => setUserPosts(data))
+        .catch((error) => console.error('Error fetching user posts:', error));
     }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userData"); // Clear user data from localStorage
-    navigate("/login"); // Redirect to login or landing page
+    localStorage.removeItem("userData");
+    navigate("/login");
   };
-
+  
   const renderContent = () => {
     switch (activeSection) {
       case 'PersonalInfo':
-        return <PersonalInfo selectedImage={selectedImage} setSelectedImage={setSelectedImage} profileData={profileData} />; // Pass profileData to PersonalInfo
+        return <PersonalInfo selectedImage={selectedImage} setSelectedImage={setSelectedImage} profileData={profileData} />;
       case 'FavoriteEvents':
         return <FavoriteEvents />;
       case 'Settings':
-        return <Settings />;
+        return <MyDiscussions posts={userPosts} />; 
       default:
         return <PersonalInfo selectedImage={selectedImage} setSelectedImage={setSelectedImage} profileData={profileData} />;
     }
@@ -212,7 +210,7 @@ function Profile() {
       <div className="profile-container">
         <div className="sidebar">
           <img
-            src={selectedImage || profilePic} // Use selected image or fallback to default
+            src={selectedImage || profilePic} 
             alt="Profile"
             className="profile-image"
           />
@@ -221,24 +219,24 @@ function Profile() {
             <li onClick={() => setActiveSection('PersonalInfo')} className={activeSection === 'PersonalInfo' ? 'active' : ''} style={{ fontSize: '22px' }}>
               <img src={profileIcon} alt="Profile Icon" className="icon" /> Personal Info
             </li>
-            <li onClick={() => setActiveSection('FavoriteEvents')} className={activeSection === 'FavoriteEvents' ? 'active' : ''} style={{ fontSize: '22px' }}>
-              <img src={eventIcon} alt="Profile Icon" className="icon" /> Events Attended
-            </li>
+            {/* <li onClick={() => setActiveSection('FavoriteEvents')} className={activeSection === 'FavoriteEvents' ? 'active' : ''} style={{ fontSize: '22px' }}>
+              <img src={profileIcon} alt="Profile Icon" className="icon" /> Events Attended
+            </li> */}
             <li onClick={() => setActiveSection('Settings')} className={activeSection === 'Settings' ? 'active' : ''} style={{ fontSize: '22px' }}>
-              <span className="icon">&#128172;</span> Discussions
+              <span className="icon">&#128172;</span> My Discussions
             </li>
           </ul>
           <div className='logoutButton' onClick={handleLogout} style={{ cursor: 'pointer' }}>
             <li style={{ color: '#FF6347', fontSize: '24px' }}>
               <span className="logoutIcon">
-                <FaSignOutAlt/>
+                <FaSignOutAlt />
               </span> Logout
             </li>
           </div>
         </div>
 
         <div className="content">
-          {renderContent()} {/* Render the content based on active section */}
+          {renderContent()} 
         </div>
       </div>
     </div>

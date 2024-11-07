@@ -68,7 +68,7 @@
   }
   
   .logoutButton {
-    margin-top: 30%;
+    margin-top: 45%;
     margin-left: -45%;
   }
   
@@ -325,4 +325,8 @@
   height: 50px;
   font-size: 20px;
   font-weight: bold;
+}
+
+.personal-info-container h2{
+  color:#1a6f53;
 }

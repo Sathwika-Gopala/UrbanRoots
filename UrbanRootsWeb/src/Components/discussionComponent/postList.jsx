@@ -1,5 +1,5 @@
 import React from 'react';
-import PostItem from './PostItem'; // Assuming PostItem is rendering individual posts
+import PostItem from './postItem'; // Assuming PostItem is rendering individual posts
 import CommentSection from './commentSection'; // Assuming CommentSection handles adding/displaying comments
 
 const PostList = ({ posts, onSelectPost, onDeletePost, onAddComment }) => {
@@ -16,10 +16,10 @@ const PostList = ({ posts, onSelectPost, onDeletePost, onAddComment }) => {
               onDeletePost={onDeletePost} 
               onAddComment={onAddComment}
             />
-            <CommentSection
+            {/* <CommentSection
               comments={post.comments || []} 
               onCommentAdd={(comment) => onAddComment(post.id, comment)}
-            />
+            /> */}
           </div>
         ))
       )}

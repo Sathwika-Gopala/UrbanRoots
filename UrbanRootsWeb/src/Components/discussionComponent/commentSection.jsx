@@ -25,8 +25,9 @@ const CommentSection = ({ comments, onCommentAdd }) => {
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
         placeholder="Add a comment..."
+        className='commentInput'
       />
-      <button onClick={handleAddComment}>Submit</button>
+      <button className='commentSubmit' onClick={handleAddComment}>Submit</button>
     </div>
   );
 };
