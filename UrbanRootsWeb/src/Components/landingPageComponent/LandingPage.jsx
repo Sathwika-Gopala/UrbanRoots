@@ -89,6 +89,7 @@ const LandingPage = () => {
                 showStatus={false}
                 autoPlay={true}
                 interval={5000}
+                showIndicators={true}
                 >
                     <div>
                     <img src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Photos.png" />

@@ -1,4 +1,5 @@
 import React, {useState}from 'react';
+import CommentSection from './commentSection'
 const DeleteIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 16 16">
     <path d="M2 1.5h12a.5.5 0 0 1 .5.5v1h-13v-1a.5.5 0 0 1 .5-.5zM2 3h12v11a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3zm3 1v8m2-8v8m2-8v8" strokeWidth="1.5" />
@@ -23,20 +24,66 @@ const CommentIcon = () => (
   </svg>
 );
 
-const PostItem = ({ post, onSelectPost, onDeletePost }) => {
+// const PostItem = ({ post, onSelectPost, onDeletePost }) => {
+//   const formattedDate = new Date(post.date).toLocaleDateString();
+//   const repliesCount = post.replies?.length || 0;
+//   const [isLiked, setIsLiked] = useState(false);
+//   const handleLikeToggle = () => {
+//     setIsLiked(!isLiked);
+//   };
+//   return (
+//     <div className="post-item">
+//       <h3 onClick={() => onSelectPost(post.id)}>{post.title}</h3>
+//       <div className='post-divider'></div>
+//       <p className='contentP'>{post.content}</p>
+//       <p>by {post.author}</p>
+//       <span>{formattedDate}</span>
+//       {/* <span>{repliesCount} replies</span> */}
+//       <div className="post-icons">
+//         <button onClick={() => onDeletePost(post.id)} className='deleteButton'>
+//           <DeleteIcon />
+//         </button>
+//         <button
+//           onClick={handleLikeToggle}
+//           style={{ cursor: 'pointer', color: isLiked ? '#FF4D4D' : 'currentColor' }}
+//         >
+//           {isLiked ? (
+//             <LikeIconFilled />
+//           ) : (
+//             <LikeIcon />
+//           )}
+//         </button>
+//         <button className='commentButton'>
+//           <CommentIcon />
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// import React, { useState } from 'react';
+// import CommentSection from './CommentSection';
+
+const PostItem = ({ post, onSelectPost, onDeletePost, onAddComment }) => {
   const formattedDate = new Date(post.date).toLocaleDateString();
-  const repliesCount = post.replies?.length || 0;
+  const [showComments, setShowComments] = useState(false); // State to toggle comments visibility
+
+  const toggleComments = () => {
+    setShowComments(!showComments); // Toggle comments visibility
+  };
   const [isLiked, setIsLiked] = useState(false);
   const handleLikeToggle = () => {
     setIsLiked(!isLiked);
   };
+
   return (
     <div className="post-item">
       <h3 onClick={() => onSelectPost(post.id)}>{post.title}</h3>
-      <h4>{post.content}</h4>
+      <div className='post-divider'></div>
+      <p className='contentP'>{post.content}</p>
       <p>by {post.author}</p>
       <span>{formattedDate}</span>
-      {/* <span>{repliesCount} replies</span> */}
+
       <div className="post-icons">
         <button onClick={() => onDeletePost(post.id)} className='deleteButton'>
           <DeleteIcon />
@@ -51,12 +98,20 @@ const PostItem = ({ post, onSelectPost, onDeletePost }) => {
             <LikeIcon />
           )}
         </button>
-        <button className='commentButton'>
+        <button onClick={toggleComments} className='commentButton'>
           <CommentIcon />
         </button>
       </div>
+
+      {/* Show comments section only if showComments is true */}
+      {showComments && <CommentSection
+              comments={post.comments || []} 
+              onCommentAdd={(comment) => onAddComment(post.id, comment)}
+            />}
     </div>
   );
 };
 
 export default PostItem;
+
+// export default PostItem;
