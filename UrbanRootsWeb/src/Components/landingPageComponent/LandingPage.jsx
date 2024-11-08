@@ -10,7 +10,18 @@ import calenderLandingPage from '../../assets/images/calenderLandingPage.jpg';
 import communityLandingPage from '../../assets/images/communityLandingPage.png';
 const LandingPage = () => {
     const navigate = useNavigate();
-    const handleSignup = () => {
+    const handleGrow = () => {
+        const userData = localStorage.getItem('userData');
+    
+    if (userData) {
+      // If logged in, proceed to open the post modal
+      navigate('/events')
+    } else {
+      // If not logged in, redirect to the login page
+      navigate('/signup');
+    }
+    }
+    const handleSignup=()=>{
         navigate('/signup')
     }
     const handleExploreEvents = () => {
@@ -141,7 +152,7 @@ const LandingPage = () => {
                 </Carousel>
             </section>
             <div>
-            <button className='LoginButtonend' onClick={handleSignup}>Grow with Us</button>
+            <button className='LoginButtonend' onClick={handleGrow}>Grow with Us</button>
             </div>
         </div>
         </div>
