@@ -5,28 +5,20 @@ import profilePic from "../../assets/image2.avif";
 import profileIcon from "../../assets/profileIconbg.png";
 import { FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom'; 
-import axios from 'axios';
 import MyDiscussions from './MyDiscussions'; 
 
 const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
   const [fileName, setFileName] = useState('');
-  const handleImageChange = async (event) => {
+  const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const formData = new FormData();
-      formData.append('image', file);
-      formData.append('userId', profileData.id); 
-  
-      try {
-        await axios.post('http://localhost:5000/api/upload-profile-picture', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        console.log('Profile picture uploaded successfully.');
-      } catch (error) {
-        console.error('Error uploading profile picture:', error);
-      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result); // Update the image in the state
+        localStorage.setItem('profileImage', reader.result); // Store the image in localStorage
+      };
+      reader.readAsDataURL(file);
+      setFileName(file.name);
     }
   };
   
@@ -37,6 +29,7 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
   const handleDeletePhoto = () => {
     setSelectedImage(null);
     setFileName('');
+    localStorage.removeItem('profileImage'); // Remove the image from localStorage
   };
 
   return (
@@ -52,7 +45,6 @@ const PersonalInfo = ({ selectedImage, setSelectedImage, profileData }) => {
                 accept="image/*" 
                 onChange={handleImageChange} 
                 className="image-upload-input"
-                value={profileData?.profileimage || ''}
                 id="file-upload" 
                 style={{ display: 'none' }} 
               />
@@ -166,7 +158,7 @@ const FavoriteEvents = () => (
 
 function Profile() {
   const [activeSection, setActiveSection] = useState('PersonalInfo');
-  const [selectedImage, setSelectedImage] = useState(null); 
+  const [selectedImage, setSelectedImage] = useState(localStorage.getItem('profileImage') || null); // Load from localStorage
   const [profileData, setProfileData] = useState(null); 
   const [userPosts, setUserPosts] = useState([]); 
   const navigate = useNavigate(); 
@@ -176,7 +168,6 @@ function Profile() {
     if (storedUserData) {
       const parsedData = JSON.parse(storedUserData);
       setProfileData(parsedData);
-      setSelectedImage(parsedData.profileimage ? `data:image/png;base64,${parsedData.profileimage}` : null);
 
       // Fetch the user's posts
       fetch(`http://localhost:5000/api/posts?userId=${parsedData.id}`)
@@ -188,6 +179,7 @@ function Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem("userData");
+    localStorage.removeItem("profileImage"); // Remove the profile image from localStorage
     navigate("/login");
   };
   

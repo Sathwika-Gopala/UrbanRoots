@@ -336,11 +336,17 @@
   transform: scale(1.1);
 }
 
+/* Prevent hover from affecting the other button */
+.seat-button:focus {
+  outline: none; /* Optional: Remove focus outline */
+}
+
 .seat-count {
   font-size: 1.4em;
   font-weight: bold;
   color: #1a6f53;
 }
+
 
 .dialog-buttons {
   display: flex;

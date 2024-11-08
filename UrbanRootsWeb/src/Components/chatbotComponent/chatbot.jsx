@@ -17,32 +17,46 @@ const Chatbot = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://localhost:1337/api/events');
+      const response = await fetch('http://localhost:5000/api/events');
+      if (!response.ok) {
+        throw new Error('Failed to fetch events');
+      }
       const data = await response.json();
-      return data.data;
+      return data; // Return the event array
     } catch (error) {
       console.error('Error fetching events:', error);
-      return [];
+      return []; // Return an empty array in case of an error
     }
   };
-
+  
+  
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
-
+  
     const newMessage = { sender: 'user', text: input };
     setMessages([...messages, newMessage]);
     setInput('');
-
+  
     try {
       const lowerCaseInput = input.toLowerCase();
       if (lowerCaseInput.includes('event') || lowerCaseInput.includes('workshop')) {
         const events = await fetchEvents();
         if (events.length > 0) {
-          let eventText = events.map(event => `
-            <b>Workshop:</b> ${event.Name} <br />
-            <b>Date:</b> ${event.DateOfEvent} <br />
-            <b>Description:</b> ${event.Description} <br /><br />
-          `).join('');
+          // Format the event details properly
+          const eventText = events
+            .map(event => {
+              const eventDate = new Date(event.date); // Parse the date
+              const formattedDate = `${eventDate.getDate()}/${eventDate.getMonth() + 1}/${eventDate.getFullYear()}`; // Format to only show day/month/year
+              return `
+                <b>Title:</b> ${event.title} <br />
+                <b>Date:</b> ${formattedDate} <br />
+                <b>Location:</b> ${event.location} <br />
+                <b>Description:</b> ${event.description} <br />
+                <b>Cost:</b> $${event.cost} <br /><br />
+              `;
+            })
+            .join('');
+  
           const botReply = { sender: 'bot', text: eventText };
           setMessages((prevMessages) => [...prevMessages, botReply]);
         } else {
@@ -61,20 +75,30 @@ const Chatbot = () => {
       ]);
     }
   };
-
+  
+  // Handle button click actions
   const handleButtonClick = async (buttonText) => {
     let botReply;
     if (buttonText === 'Events') {
-      const events = await fetchEvents();
-      if (events.length > 0) {
-        const eventText = events.map(event => `
-          <b>Workshop:</b> ${event.Name} <br />
-          <b>Date:</b> ${event.DateOfEvent} <br />
-          <b>Description:</b> ${event.Description} <br /><br />
-        `).join('');
-        botReply = { sender: 'bot', text: eventText };
-      } else {
-        botReply = { sender: 'bot', text: 'No upcoming events.' };
+      try {
+        const events = await fetchEvents();
+        if (events.length > 0) {
+          const eventText = events.map(event => {
+            const eventDate = new Date(event.date); // Parse the date
+            const formattedDate = `${eventDate.getDate()}/${eventDate.getMonth() + 1}/${eventDate.getFullYear()}`; // Format to only show day/month/year
+            return `
+              <b>Title:</b> ${event.title} <br />
+              <b>Date:</b> ${formattedDate} <br />
+              <b>Description:</b> ${event.description} <br /><br />
+            `;
+          }).join('');
+          botReply = { sender: 'bot', text: eventText };
+        } else {
+          botReply = { sender: 'bot', text: 'No upcoming events.' };
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        botReply = { sender: 'bot', text: 'Sorry, there was an issue fetching events.' };
       }
     } else if (buttonText === 'Prior Experience') {
       botReply = { sender: 'bot', text: 'No experience? No problem! 🌱 Whether you’re a curious beginner or a seasoned gardener, everyone’s welcome to join the fun and grow together! 🌻' };
@@ -82,11 +106,11 @@ const Chatbot = () => {
       botReply = { sender: 'bot', text: 'Wear your comfy best! 🌿 Choose clothes you can move in, get a little messy, and feel relaxed. (Pro tip: maybe skip the white—gardens love to share their colors! 🌸🌱)' };
     } else if (buttonText === 'Audience Age') {
       botReply = { sender: 'bot', text: `🌱 Absolutely Anyone! 🌱<br>
-Our events are designed for all ages and experience levels—whether you're a first-time gardener or a green-thumbed expert! Everyone from kids 👶 to adults 👩‍🌾, families 👨‍👩‍👧‍👦, and even friend groups 🤗 are welcome to join and learn together.` };
+        Our events are designed for all ages and experience levels—whether you're a first-time gardener or a green-thumbed expert! Everyone from kids 👶 to adults 👩‍🌾, families 👨‍👩‍👧‍👦, and even friend groups 🤗 are welcome to join and learn together.` };
     }
     setMessages((prevMessages) => [...prevMessages, botReply]);
   };
-
+  
   return (
     <div className="chat-container">
       <div className="chat-header">Chatbot</div>
@@ -107,19 +131,6 @@ Our events are designed for all ages and experience levels—whether you're a fi
           </div>
         )}
       </div>
-      {/* <div className="chat-input-container">
-  <input
-    type="text"
-    placeholder="Type your message..."
-    value={input}
-    onChange={(e) => setInput(e.target.value)}
-    onKeyDown={(e) => {
-      if (e.key === 'Enter') handleSendMessage();
-    }}
-  />
-  <button onClick={handleSendMessage} className="send-button">Send</button>
-</div> */}
-
     </div>
   );
 };

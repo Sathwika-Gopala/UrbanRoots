@@ -4,7 +4,7 @@ import NavBar from '../landingPageComponent/NavBar';
 
 const Payment = () => {
     const location = useLocation();
-    const { currentEvent, totalCost } = location.state; // Assuming these are passed from the previous component
+    const { currentEvent, totalCost, eventImage } = location.state; // eventImage added here
     const [userData, setUserData] = useState({
         name: '',
         email: '',
@@ -46,7 +46,8 @@ const Payment = () => {
             <div className="payment-page">
                 <h4>Booking Payment for</h4>
                 <h2>{currentEvent.title}</h2>
-                <img className='payment-image' src={currentEvent.image} alt={currentEvent.title} />
+                <img className="payment-image" src={currentEvent.image} alt={currentEvent.title} />
+
                 <p className='cost-p'>Total Cost: ₹{totalCost}</p>
                 <div className='user-details'>
                     <h3>User Details</h3>
