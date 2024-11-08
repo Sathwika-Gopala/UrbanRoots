@@ -219,18 +219,21 @@ app.post('/api/payment-verification', (req, res) => {
   }
 });
 
+
+app.use(express.json());
+
 app.post('/api/chatbot', async (req, res) => {
   const userMessage = req.body.message;
 
   // If the user asks about events
   if (userMessage.toLowerCase().includes('event') || userMessage.toLowerCase().includes('when')) {
     try {
-      const response = await fetch('http://localhost:1337/api/events');
-      const events = await response.json();
+      // Query the database to fetch upcoming events
+      const result = await pool.query('SELECT * FROM events WHERE DateOfEvent > NOW() ORDER BY DateOfEvent ASC');
 
-      if (events.data && events.data.length > 0) {
-        const eventsList = events.data.map(event => 
-          `Workshop: ${event.Name}\nDate: ${event.DateOfEvent}\nDescription: ${event.Description}`).join('\n\n');
+      if (result.rows.length > 0) {
+        const eventsList = result.rows.map(event =>
+          `Workshop: ${event.name}\nDate: ${event.dateofevent}\nDescription: ${event.description}`).join('\n\n');
         return res.json({ reply: `Here are some upcoming events:\n\n${eventsList}` });
       } else {
         return res.json({ reply: 'Sorry, I couldn\'t find any upcoming events.' });
@@ -244,6 +247,31 @@ app.post('/api/chatbot', async (req, res) => {
   // Default chatbot behavior for other queries
   return res.json({ reply: 'I didn\'t quite get that. Could you rephrase?' });
 });
+
+// Start the server
+app.listen(1337, () => {
+  console.log('Server is running on http://localhost:1337');
+});
+
+
+// Backend - app.js or routes/events.js (if you're using route-based structure)
+app.use(cors()); // Enable CORS to allow the frontend to communicate with the backend
+app.use(express.json()); // Parse JSON request bodies
+app.get('/api/events', async (req, res) => {
+  try {
+    // Query to fetch events from your database
+    const query = 'SELECT * FROM events';
+    const result = await pool.query(query);
+
+    // Send the fetched events data as JSON
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch events' });
+  }
+});
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
