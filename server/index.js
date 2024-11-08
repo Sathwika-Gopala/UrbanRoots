@@ -57,31 +57,6 @@ const readPostsFromFile = () => {
 const writePostsToFile = (posts) => {
   fs.writeFileSync(postsFilePath, JSON.stringify(posts, null, 2));
 };
-app.use(cors());
-
-// File upload configuration
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
-
-// Initialize Razorpay instance
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_SECRET,
-});
-// Read posts from file
-const readPostsFromFile = () => {
-  try {
-    const data = fs.readFileSync(postsFilePath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return []; // If file doesn't exist, return empty array
-  }
-};
-
-// Write posts to file
-const writePostsToFile = (posts) => {
-  fs.writeFileSync(postsFilePath, JSON.stringify(posts, null, 2));
-};
 
 
 // Route for user signup

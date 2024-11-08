@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Chatbot from './chatbot'; // Import the Chatbot component
+import {FaHeadset} from 'react-icons/fa';
 
 const ChatbotButton = () => {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
@@ -12,7 +13,7 @@ const ChatbotButton = () => {
     <div className="app">
       {/* Floating Chatbot Button */}
       <button className="chatbot-button" onClick={toggleChatbot}>
-      <i className="fas fa-headset"></i> Helpline
+      <FaHeadset className="icon"/> Helpline
       </button>
 
       {/* Render Chatbot Component as a Modal */}
