@@ -36,7 +36,7 @@ const Events = () => {
     // Fetch event data from the backend API when the component mounts
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/events');  // Make sure this matches your backend URL
+        const response = await fetch('http://139.84.149.135/api/events');  
         const data = await response.json();
         setEvents(data);  // Store events in state
       } catch (error) {

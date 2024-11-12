@@ -28,7 +28,7 @@ function Login() {
     try {
       // Sending login data to the backend API
       const response = await axios.post(
-        "http://localhost:5000/api/login",
+        "http://139.84.149.135/api/login",
         formData
       );
 

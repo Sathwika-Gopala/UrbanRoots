@@ -20,7 +20,7 @@ const Discussion = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 //loading posts from api
   useEffect(() => {
-    fetch('http://localhost:5000/api/posts')
+    fetch('http://139.84.149.135/api/posts')
       .then((response) => response.json())
       .then((data) => setPosts(data))
       .catch((error) => console.error('Error fetching posts:', error));
@@ -32,7 +32,7 @@ const Discussion = () => {
   //   setModalOpen(false);
   // };
   const handleNewPost = (post) => {
-    fetch('http://localhost:5000/api/posts', {
+    fetch('http://139.84.149.135/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const Discussion = () => {
   //   }
   // };
   const handleDeletePost = (postId) => {
-    fetch(`http://localhost:5000/api/posts/${postId}`, {
+    fetch(`http://139.84.149.135/api/posts/${postId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -81,7 +81,7 @@ const Discussion = () => {
   //   setPosts(updatedPosts);
   // };
   const handleAddComment = (postId, comment) => {
-    fetch(`http://localhost:5000/api/posts/${postId}/comments`, {
+    fetch(`http://139.84.149.135/api/posts/${postId}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

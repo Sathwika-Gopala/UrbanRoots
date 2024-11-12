@@ -52,7 +52,7 @@ function Signup() {
     try {
       // Send signup data to the backend API
       const response = await axios.post(
-        "http://localhost:5000/api/signup",
+        "http://139.84.149.135/api/signup",
         formData
       );
       console.log(response.data);

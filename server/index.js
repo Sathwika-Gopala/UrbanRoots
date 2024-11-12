@@ -16,7 +16,7 @@ import { dirname } from 'path';
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 3000;
 
 // Database connection
 const pool = new Pool({
@@ -248,10 +248,7 @@ app.post('/api/chatbot', async (req, res) => {
   return res.json({ reply: 'I didn\'t quite get that. Could you rephrase?' });
 });
 
-// Start the server
-app.listen(1337, () => {
-  console.log('Server is running on http://localhost:1337');
-});
+
 
 
 // Backend - app.js or routes/events.js (if you're using route-based structure)
@@ -273,6 +270,6 @@ app.get('/api/events', async (req, res) => {
 
 
 // Start the server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
