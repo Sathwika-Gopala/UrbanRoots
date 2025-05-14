@@ -170,7 +170,7 @@ function Profile() {
       setProfileData(parsedData);
 
       // Fetch the user's posts
-      fetch(`http://139.84.149.135/api/posts?userId=${parsedData.id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/posts?userId=${parsedData.id}`)
         .then((response) => response.json())
         .then((data) => setUserPosts(data))
         .catch((error) => console.error('Error fetching user posts:', error));

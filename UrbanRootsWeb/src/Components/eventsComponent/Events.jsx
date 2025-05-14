@@ -33,18 +33,85 @@ const Events = () => {
   };
 
   useEffect(() => {
-    // Fetch event data from the backend API when the component mounts
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch('http://139.84.149.135/api/events');  
-        const data = await response.json();
-        setEvents(data);  // Store events in state
-      } catch (error) {
-        console.error('Error fetching events:', error);
-      }
-    };
+    // // Fetch event data from the backend API when the component mounts
+    // const fetchEvents = async () => {
+    //   try {
+    //     const response = await fetch('http://139.84.149.135/api/events');  
+    //     const data = await response.json();
+    //     setEvents(data);  // Store events in state
+    //   } catch (error) {
+    //     console.error('Error fetching events:', error);
+    //   }
+    // };
 
-    fetchEvents();
+    // fetchEvents();
+
+    // Hardcoded events data for local/frontend use
+    setEvents([
+      {
+        id: 1,
+        title: "Kid's Gardening Day",
+        date: "2024-06-15",
+        location: "Urban Roots Community Garden",
+        cost: "₹200",
+        description: "A fun-filled day for kids to learn about gardening through hands-on activities and games.",
+        availableseats: 30
+      },
+      {
+        id: 2,
+        title: "Basic Workshop",
+        date: "2024-06-20",
+        location: "Urban Roots Center",
+        cost: "₹300",
+        description: "Learn the basics of urban gardening, soil preparation, and plant care.",
+        availableseats: 25
+      },
+      {
+        id: 3,
+        title: "DIY Garden Decor Workshop",
+        date: "2024-06-25",
+        location: "Urban Roots Studio",
+        cost: "₹250",
+        description: "Get creative and make your own garden decorations using recycled materials.",
+        availableseats: 20
+      },
+      {
+        id: 4,
+        title: "Medicinal Herb Gardening",
+        date: "2024-07-01",
+        location: "Urban Roots Herb Garden",
+        cost: "₹350",
+        description: "Discover the benefits of medicinal herbs and how to grow them at home.",
+        availableseats: 15
+      },
+      {
+        id: 5,
+        title: "Permaculture Workshop",
+        date: "2024-07-10",
+        location: "Urban Roots Farm",
+        cost: "₹400",
+        description: "An introduction to permaculture principles and sustainable gardening techniques.",
+        availableseats: 20
+      },
+      {
+        id: 6,
+        title: "Monthly Garden Walk",
+        date: "2024-07-15",
+        location: "Urban Roots Community Garden",
+        cost: "Free",
+        description: "Join our monthly walk to explore seasonal plants and gardening tips.",
+        availableseats: 50
+      },
+      {
+        id: 7,
+        title: "Nature Art Day",
+        date: "2024-07-20",
+        location: "Urban Roots Park",
+        cost: "₹150",
+        description: "A creative day for all ages to make art inspired by nature.",
+        availableseats: 40
+      }
+    ]);
 
     const storedUserData = JSON.parse(localStorage.getItem('userData'));
     if (storedUserData) {
